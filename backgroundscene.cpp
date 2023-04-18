@@ -50,7 +50,7 @@ void BackgroundScene::addCherryBlossom()
 
     if (numBlossoms < NUM_CHERRY_BLOSSOMS) {
         CherryBlossom* cherryBlossom = new CherryBlossom();
-        int randomX = arc4random_uniform(BACKGROUND_WIDTH);
+        int randomX = arc4random_uniform(BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE);
         cherryBlossom->setPos(randomX, 0);
         this->addItem(cherryBlossom);
     }
