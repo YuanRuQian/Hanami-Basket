@@ -4,7 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 
-class QTimer;
+class QMovie; // Forward declaration
 
 class CherryBlossom : public QObject, public QGraphicsPixmapItem
 {
@@ -15,7 +15,11 @@ public:
 public slots:
     void falling();
 
+private slots:
+    void updatePixmap();
+
 private:
+    QMovie* movie_; // QMovie instance for animated GIF
     QTimer *timer_;
 };
 

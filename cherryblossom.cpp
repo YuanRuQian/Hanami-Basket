@@ -1,15 +1,34 @@
 #include "cherryblossom.h"
 #include "constants.h"
 #include <QTimer>
+#include <QMovie>
+
 
 CherryBlossom::CherryBlossom(QObject *parent)
-    : QObject{parent}, timer_{new QTimer{this}}
+    : QObject{parent}, movie_{new QMovie{"://images/cherryBlossom.gif"}}, timer_{new QTimer{this}}
 {
-    this->setPixmap((QPixmap("://images/cherryBlossom.gif")).scaled(CHERRYBLOSSOM_SIZE,CHERRYBLOSSOM_SIZE));
+    // Set the QMovie as the pixmap for the QGraphicsPixmapItem
+    setPixmap(movie_->currentPixmap().scaled(CHERRYBLOSSOM_SIZE, CHERRYBLOSSOM_SIZE));
+
+    // Connect the QMovie's frameChanged signal to the updatePixmap slot
+    connect(movie_, &QMovie::frameChanged, this, &CherryBlossom::updatePixmap);
+
+    // Start the QMovie
+    movie_->start();
+
+    // Set the QTimer to trigger the falling slot
     connect(timer_, &QTimer::timeout, this, &CherryBlossom::falling);
     timer_->start(CHERRYBLOSSOM_FALLING_INTERVAL);
 }
 
+void CherryBlossom::updatePixmap()
+{
+    // Check if the QMovie has a valid pixmap at the current frame
+    if (movie_->isValid()) {
+        // Update the pixmap with the current frame of the QMovie
+        setPixmap(movie_->currentPixmap().scaled(CHERRYBLOSSOM_SIZE, CHERRYBLOSSOM_SIZE));
+    }
+}
 
 void CherryBlossom::falling()
 {
@@ -21,7 +40,7 @@ void CherryBlossom::falling()
     setPos(x() + dx, y());
 
     // if the cherry blossom has fallen off the screen, delete it and create a new one
-    if (y() > BACKGROUND_HEIGHT || x() < -CHERRYBLOSSOM_SIZE || x() > BACKGROUND_WIDTH + CHERRYBLOSSOM_SIZE) {
+    if (y() + CHERRYBLOSSOM_SIZE > BACKGROUND_HEIGHT || x() < 0 || x() >= BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE) {
         timer_->stop();
         this->deleteLater();
     }

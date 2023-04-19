@@ -17,15 +17,15 @@ private:
 
 public:
     explicit BackgroundScene(CanvasWidget* canvas, QObject* parent = nullptr);
-
+    CanvasWidget* canvasWidget;
 
 private:
     void setUpBasket();
     void addCherryBlossom();
 
-public:
+public slots:
     void increaseScoreByOne();
-    CanvasWidget* canvasWidget;
+
 };
 
 #endif // BACKGROUNDSCENE_H
