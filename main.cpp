@@ -8,7 +8,7 @@
 int main(int argc, char **argv) {
     QApplication app (argc, argv);
 
-    CanvasWidget* mainWidget = new CanvasWidget();
+    CanvasWidget* mainWidget = new CanvasWidget(&app);
 
     mainWidget->show();
 

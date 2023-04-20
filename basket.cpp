@@ -1,6 +1,7 @@
 #include "basket.h"
 #include "constants.h"
 #include "cherryblossom.h"
+#include "gamestatemachine.h"
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
@@ -10,6 +11,9 @@ Basket::Basket(QObject *parent)
     : QObject{parent}
 {
     this->setPixmap(QPixmap("://images/basket.png").scaled(BASKET_SIZE, BASKET_SIZE));
+
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    connect(this, &Basket::collisionDetected, gameStateMachine, &GameStateMachine::handleBasketCollision);
 }
 
 void Basket::keyPressEvent(QKeyEvent *event)
@@ -48,9 +52,9 @@ void Basket::detectCollisions()
     for (QGraphicsItem* item : collisions) {
         if (dynamic_cast<CherryBlossom*>(item)) {
             scene()->removeItem(item);
-            delete item;
             emit collisionDetected();
         }
     }
 }
+
 

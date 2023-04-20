@@ -1,6 +1,7 @@
 #include "backgroundscene.h"
 #include "constants.h"
 #include "cherryblossom.h"
+#include "gamestatemachine.h"
 #include "basket.h"
 
 
@@ -11,7 +12,7 @@
 class CanvasWidget;
 
 BackgroundScene::BackgroundScene(CanvasWidget* canvas, QObject* parent)
-    : QGraphicsScene(parent), canvasWidget(canvas)
+    : QGraphicsScene(parent),canvasWidget(canvas)
 {
     this->setSceneRect(0,0,BACKGROUND_WIDTH,BACKGROUND_HEIGHT);
     this->setBackgroundBrush(QBrush(QImage("://images/background.png").scaledToHeight(BACKGROUND_HEIGHT).scaledToWidth(BACKGROUND_WIDTH)));
@@ -19,11 +20,12 @@ BackgroundScene::BackgroundScene(CanvasWidget* canvas, QObject* parent)
     this->setUpBasket();
     this->addItem(basket);
 
-    connect(basket, &Basket::collisionDetected, this, &BackgroundScene::increaseScoreByOne);
-
-    QTimer* timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &BackgroundScene::addCherryBlossom);
     timer->start(500);
+
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    connect(gameStateMachine, &GameStateMachine::terminateTheGame, this, &BackgroundScene::handleTermination);
 }
 
 void BackgroundScene::setUpBasket()
@@ -56,7 +58,18 @@ void BackgroundScene::addCherryBlossom()
     }
 }
 
-void BackgroundScene::increaseScoreByOne()
+void BackgroundScene::clearCherryBlossom()
 {
-    canvasWidget->increaseScoreByOne();
+    QList<QGraphicsItem*> items = this->items();
+    for (QGraphicsItem* item : items) {
+        if (CherryBlossom* cherryBlossom = dynamic_cast<CherryBlossom*>(item)) {
+            this->removeItem(cherryBlossom);
+            delete cherryBlossom;
+        }
+    }
+}
+
+void BackgroundScene::handleTermination() {
+    timer->stop();
+    clearCherryBlossom();
 }

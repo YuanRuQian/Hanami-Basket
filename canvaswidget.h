@@ -3,21 +3,34 @@
 
 #include <QLabel>
 #include <QWidget>
+#include <QApplication>
 
 class CanvasWidget : public QWidget
 {
     Q_OBJECT
 private:
+    QApplication* gameApp;
+
+    QFont labelFont;
+
     QLabel* scoreTextLabel;
     QLabel* scoreCountLabel;
-    int score;
 
     void setUpScoreLabels();
 
+    QLabel* livesTextLabel;
+    QLabel* livesCountLabel;
+
+    void setUpLivesLabels();
+
 public:
-    explicit CanvasWidget(QWidget *parent = nullptr);
-    void increaseScoreByOne();
-signals:
+    CanvasWidget(QApplication* gameApp, QWidget *parent = nullptr);
+
+
+private:
+    void terminateTheGame();
+    void updateScoreLabel(int newScore);
+    void updateLivesLabel(int newLives);
 
 };
 
