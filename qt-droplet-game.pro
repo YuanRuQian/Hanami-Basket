@@ -17,3 +17,6 @@ HEADERS += \
     canvaswidget.h \
     cherryblossom.h \
     constants.h
+
+DISTFILES += \
+    gamemodel.qmodel
