@@ -1,7 +1,5 @@
 
-#include "backgroundscene.h"
 #include "canvaswidget.h"
-#include "constants.h"
 
 #include <QApplication>
 #include <QGraphicsView>

@@ -1,4 +1,3 @@
-#include "constants.h"
 
 int BACKGROUND_HEIGHT = 560;
 int BACKGROUND_WIDTH = 1000;
