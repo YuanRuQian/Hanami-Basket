@@ -2,6 +2,7 @@
 
 #include "gamestatemachine.h"
 #include "constants.h"
+#include <QDebug>
 
 // Initialize the static instance to nullptr
 GameStateMachine* GameStateMachine::m_instance = nullptr;
@@ -19,26 +20,8 @@ GameStateMachine* GameStateMachine::instance()
 GameStateMachine::GameStateMachine(QObject *parent)
     : QObject(parent)
 {
-
     score = 0;
     livesCount = DEFAULT_LIVES;
-
-    // Create state machine
-    stateMachine = new QStateMachine(this);
-
-    // Create states
-    gameplayState = new QState();
-
-
-    // Add states as child states of the state machine
-    stateMachine->addState(gameplayState);
-
-
-    // Set initial state
-    stateMachine->setInitialState(gameplayState);
-
-    // Start the state machine
-    stateMachine->start();
 }
 
 void GameStateMachine::handleBasketCollision()
@@ -50,7 +33,8 @@ void GameStateMachine::handleBasketCollision()
     qDebug() << "Score updated: New score =" << score << "\n\n";
 }
 
-void GameStateMachine::handleMissDetection() {
+void GameStateMachine::handleMissDetection()
+{
     livesCount--;
 
     qDebug() << "\n\nTriggered: GameStateMachine::handleMissDetection()";
@@ -58,18 +42,15 @@ void GameStateMachine::handleMissDetection() {
 
     emit livesCountUpdated(livesCount);
 
-    if(livesCount == 0) {
+    if (livesCount == 0)
+    {
         qDebug() << "Oops you died... Bye...\n\n";
         emit terminateTheGame();
     }
-
 }
 
 GameStateMachine::~GameStateMachine()
 {
-    // Clean up the state machine and its child states
-    delete stateMachine;
-    delete gameplayState;
+    // Clean up the singleton instance
+    m_instance = nullptr;
 }
-
-
