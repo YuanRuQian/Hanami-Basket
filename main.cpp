@@ -1,7 +1,5 @@
 
-#include "backgroundscene.h"
 #include "canvaswidget.h"
-#include "constants.h"
 
 #include <QApplication>
 #include <QGraphicsView>
@@ -10,7 +8,7 @@
 int main(int argc, char **argv) {
     QApplication app (argc, argv);
 
-    CanvasWidget* mainWidget = new CanvasWidget();
+    CanvasWidget* mainWidget = new CanvasWidget(&app);
 
     mainWidget->show();
 

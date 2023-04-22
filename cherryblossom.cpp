@@ -1,5 +1,6 @@
 #include "cherryblossom.h"
 #include "constants.h"
+#include "gamestatemachine.h"
 #include <QTimer>
 #include <QMovie>
 
@@ -19,6 +20,9 @@ CherryBlossom::CherryBlossom(QObject *parent)
     // Set the QTimer to trigger the falling slot
     connect(timer_, &QTimer::timeout, this, &CherryBlossom::falling);
     timer_->start(CHERRYBLOSSOM_FALLING_INTERVAL);
+
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    connect(this, &CherryBlossom::missDetected, gameStateMachine, &GameStateMachine::handleMissDetection);
 }
 
 void CherryBlossom::updatePixmap()
@@ -39,9 +43,14 @@ void CherryBlossom::falling()
     qreal dx = qSin(y() / CHERRYBLOSSOM_WIND_FREQUENCY) * CHERRYBLOSSOM_WIND_EFFECT;
     setPos(x() + dx, y());
 
-    // if the cherry blossom has fallen off the screen, delete it and create a new one
-    if (y() + CHERRYBLOSSOM_SIZE > BACKGROUND_HEIGHT || x() < 0 || x() >= BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE) {
+    if (y() + CHERRYBLOSSOM_SIZE > BACKGROUND_HEIGHT) {
+        timer_->stop();     
+        this->deleteLater();
+        emit missDetected();
+    } else if (x() < 0 || x() >= BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE) {
         timer_->stop();
         this->deleteLater();
     }
 }
+
+

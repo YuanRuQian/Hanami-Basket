@@ -14,18 +14,17 @@ class BackgroundScene: public QGraphicsScene
     Q_OBJECT
 private:
     Basket* basket;
+    QTimer* timer;
 
 public:
-    explicit BackgroundScene(CanvasWidget* canvas, QObject* parent = nullptr);
+    BackgroundScene(CanvasWidget* canvas, QObject *parent = nullptr);
     CanvasWidget* canvasWidget;
 
 private:
     void setUpBasket();
     void addCherryBlossom();
-
-public slots:
-    void increaseScoreByOne();
-
+    void handleTermination();
+    void clearCherryBlossom();
 };
 
 #endif // BACKGROUNDSCENE_H

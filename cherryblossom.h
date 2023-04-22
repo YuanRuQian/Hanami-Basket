@@ -18,6 +18,9 @@ public slots:
 private slots:
     void updatePixmap();
 
+signals:
+    void missDetected();
+
 private:
     QMovie* movie_; // QMovie instance for animated GIF
     QTimer *timer_;
