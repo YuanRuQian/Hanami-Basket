@@ -1,5 +1,8 @@
 QT+=widgets
 
+QT+=multimedia
+
+
 SOURCES += \
     backgroundscene.cpp \
     basket.cpp \
@@ -7,7 +10,8 @@ SOURCES += \
     cherryblossom.cpp \
     constants.cpp \
     gamestatemachine.cpp \
-    main.cpp
+    main.cpp \
+    soundeffectmanager.cpp
 
 RESOURCES += \
     resources.qrc
@@ -18,7 +22,8 @@ HEADERS += \
     canvaswidget.h \
     cherryblossom.h \
     constants.h \
-    gamestatemachine.h
+    gamestatemachine.h \
+    soundeffectmanager.h
 
 DISTFILES += \
     gamemodel.qmodel

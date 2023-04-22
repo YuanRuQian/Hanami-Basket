@@ -2,6 +2,7 @@
 #include "canvaswidget.h"
 #include "constants.h"
 #include "gamestatemachine.h"
+#include "soundeffectmanager.h"
 #include <QGraphicsView>
 #include <QVBoxLayout>
 #include <QMessageBox>
@@ -53,6 +54,10 @@ CanvasWidget::CanvasWidget(QApplication* app, QWidget *parent)
     connect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
     connect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
     connect(gameStateMachine, &GameStateMachine::terminateTheGame, this, &CanvasWidget::terminateTheGame);
+
+    SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
+    connect(gameStateMachine, &GameStateMachine::scoreUpdated, soundEffectManager, &SoundEffectManager::playCollisionSound);
+    connect(gameStateMachine, &GameStateMachine::livesCountUpdated, soundEffectManager, &SoundEffectManager::playMissSound);
 }
 
 
@@ -87,10 +92,18 @@ void CanvasWidget::updateLivesLabel(int newLives) {
 void CanvasWidget::terminateTheGame() {
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
 
-    connect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
-    connect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
+    disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
+    disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
 
     QMessageBox::information(nullptr, "Game Over", "Oops...You died...");
+
     gameApp->quit();
+
+    SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
+
+    disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, soundEffectManager, &SoundEffectManager::playCollisionSound);
+    disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, soundEffectManager, &SoundEffectManager::playMissSound);
+
+
 }
 
