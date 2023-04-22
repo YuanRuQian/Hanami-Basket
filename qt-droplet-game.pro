@@ -1,8 +1,5 @@
 QT+=widgets
 
-QT+=statemachine
-
-
 SOURCES += \
     backgroundscene.cpp \
     basket.cpp \
