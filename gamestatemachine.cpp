@@ -2,6 +2,7 @@
 
 #include "gamestatemachine.h"
 #include "constants.h"
+#include "score.h"
 #include <QDebug>
 
 // Initialize the static instance to nullptr
@@ -47,6 +48,8 @@ void GameStateMachine::handleMissDetection()
     if (livesCount == 0)
     {
         qDebug() << "Oops you died... Bye...\n\n";
+        // TODO: use actual username
+        Score::insertNewRecord(QString("null"), score);
         emit terminateTheGame();
     }
 }
