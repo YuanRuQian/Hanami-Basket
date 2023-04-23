@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
     QApplication app (argc, argv);
 
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
-    gameStateMachine->setGameLevel(Medium);
+    gameStateMachine->setGameLevelWithText(QString("X"));
 
     CanvasWidget* mainWidget = new CanvasWidget(&app);
 

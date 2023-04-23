@@ -47,7 +47,7 @@ signals:
 public slots:
     void handleBasketCollision();
     void handleMissDetection();
-    void setGameLevel(GameLevel gameLevel);
+    void setGameLevelWithText(QString gameLevelText);
 
 private:
     int score;
@@ -55,6 +55,7 @@ private:
     GameLevel gameLevel;
     void updateGameLevel();
     void setUpGameLevelConfig();
+    void setGameLevel(GameLevel gameLevel);
 };
 
 #endif // GAMESTATEMACHINE_H

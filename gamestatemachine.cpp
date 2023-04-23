@@ -56,6 +56,24 @@ void GameStateMachine::setGameLevel(GameLevel newGameLevel) {
     emit gameLevelUpdated();
 }
 
+void GameStateMachine::setGameLevelWithText(QString gameLevelText) {
+    std::string text = gameLevelText.toStdString();
+
+    GameLevel newGameLevel;
+
+    if(text == "Easy") {
+        newGameLevel = Easy;
+    } else if(text == "Medium") {
+        newGameLevel = Medium;
+    } else if(text == "Hard") {
+        newGameLevel = Hard;
+    } else {
+        throw std::runtime_error("Unrecognized game level: " + text); // Throw a runtime_error with error message
+    }
+
+    setGameLevel(newGameLevel);
+}
+
 void GameStateMachine::setUpGameLevelConfig() {
     // Insert values for each game level
     GameLevelConfig easyConfig = {50, 30};    // Example values for Easy level
