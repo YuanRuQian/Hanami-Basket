@@ -168,6 +168,9 @@ void Score::write(QString path, QJsonArray arr) {
  */
 QJsonDocument Score::read(QString path) {
     QFile file(path);
+    if (!file.exists()) {
+        return QJsonDocument();
+    }
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "can't open the file: " << path;
     }
@@ -177,6 +180,11 @@ QJsonDocument Score::read(QString path) {
     QJsonParseError jsonError;
     QJsonDocument doc = QJsonDocument::fromJson(str.toUtf8(), &jsonError);
     return doc;
+}
+
+void Score::removeFile(QString path) {
+    QFile file(path);
+    file.remove();
 }
 
 
