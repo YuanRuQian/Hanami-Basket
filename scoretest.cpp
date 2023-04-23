@@ -57,17 +57,10 @@ void ScoreTest::testAll() {
     testAddScoreAndGlobalBestScore();
     testGetScoreHistory();
     qDebug() << "Score test passed!";
-<<<<<<< HEAD
     Score::removeFile(Score::getScoreFilePath(username1));
     Score::removeFile(Score::getScoreFilePath(username2));
     Score::removeFile(Score::GLOBAL_BEST_SCORE_PATH);
     Score::updateGlobalBestScore(Score("null", QDateTime::currentDateTime(), 0));
-=======
-    QFile file1(Score::getScoreFilePath(username1));
-    file1.remove();
-    QFile file2(Score::getScoreFilePath(username2));
-    file2.remove();
->>>>>>> 3d7e8a9 (add Score class and tests)
 }
 
 /**

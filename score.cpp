@@ -168,12 +168,9 @@ void Score::write(QString path, QJsonArray arr) {
  */
 QJsonDocument Score::read(QString path) {
     QFile file(path);
-<<<<<<< HEAD
     if (!file.exists()) {
         return QJsonDocument();
     }
-=======
->>>>>>> 3d7e8a9 (add Score class and tests)
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "can't open the file: " << path;
     }
@@ -185,14 +182,10 @@ QJsonDocument Score::read(QString path) {
     return doc;
 }
 
-<<<<<<< HEAD
 void Score::removeFile(QString path) {
     QFile file(path);
     file.remove();
 }
-
-=======
->>>>>>> 3d7e8a9 (add Score class and tests)
 
 
 
