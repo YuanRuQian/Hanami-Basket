@@ -13,6 +13,8 @@ int main(int argc, char **argv) {
     // ScoreTest().testAll();
 
     QApplication app (argc, argv);
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    gameStateMachine->setGameLevelWithText(QString("Medium"));
 
     CanvasWidget* mainWidget = new CanvasWidget(&app);
 
