@@ -81,6 +81,12 @@ bool Score::updateGlobalBestScore(Score score) {
     return true;
 }
 
+void Score::insertNewRecord(QString username, int score) {
+    Score scoreObj(username, QDateTime::currentDateTime(), score);
+    addScore(scoreObj);
+    updateGlobalBestScore(scoreObj);
+}
+
 /**
  * @brief Get the file path of a user's score data.
  * @param username -- the specified username
