@@ -24,7 +24,7 @@ public:
     static bool checkUser(QString username, QString password);
     static bool addUser(User user);
     static bool isBirthday(QString username);
-    static QString getFilePath(QString username);
+    static QString getUserFilePath(QString username);
     static QJsonObject getUserData(QString username);
 };
 

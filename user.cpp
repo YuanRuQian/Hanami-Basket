@@ -82,7 +82,7 @@ bool User::addUser(User user) {
     jsonObj["avatar"] = user.avatar;
     jsonObj["birthday"] = user.birthday.toString("yyyy-MM-dd");
     QJsonDocument jsonDoc(jsonObj);
-    QFile file(User::getFilePath(user.username));
+    QFile file(User::getUserFilePath(user.username));
     if (!file.open(QIODevice::WriteOnly| QIODevice::Truncate)) {
         qDebug() << "can't open the file!";
         return false;
@@ -104,12 +104,12 @@ bool User::isBirthday(QString username) {
     return today.month() == birthday.month() && today.day() == birthday.day();
 }
 
-QString User::getFilePath(QString username) {
+QString User::getUserFilePath(QString username) {
     return User::USER_PATH + username + QString(".json");
 }
 
 QJsonObject User::getUserData(QString username) {
-    QFile file(User::getFilePath(username));
+    QFile file(User::getUserFilePath(username));
     if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << "can't open the file!";
     }
