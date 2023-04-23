@@ -31,4 +31,5 @@ HEADERS += \
 
 DISTFILES += \
     data/users/test_user.json \
+    data/users/user_test.json \
     gamemodel.qmodel

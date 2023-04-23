@@ -1,8 +1,7 @@
 .DS_Store
 # data storage
-data/users/*
-data/avatars/*
-data/scores/*[O
+data/*
+!data/users/user_test.json
 # C++ objects and libs
 *.slo
 *.lo
