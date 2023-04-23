@@ -22,6 +22,7 @@ public:
     static void addScore(Score score);
     static Score getGlobalBestScore();
     static bool updateGlobalBestScore(Score score);
+    static void insertNewRecord(QString username, int score);
 
     static QString getScoreFilePath(QString username);
     static QJsonArray getScoreData(QString username);

@@ -1,6 +1,7 @@
 
 #include "canvaswidget.h"
 #include "scoretest.h"
+#include "usertest.h"
 #include "gamestatemachine.h"
 
 #include <QApplication>
@@ -8,8 +9,9 @@
 #include <QVBoxLayout>
 
 int main(int argc, char **argv) {
-    ScoreTest scoreTest = ScoreTest();
-    scoreTest.testAll();
+    UserTest::testAll();
+    ScoreTest().testAll();
+
     QApplication app (argc, argv);
 
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
