@@ -20,16 +20,20 @@ void Basket::keyPressEvent(QKeyEvent *event)
 {
     int prevX = pos().x();
 
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+
+    int basketMoveStep = gameStateMachine->getCurrentGameLevelConfig().BASKET_MOVE_STEP;
+
     if (event->key() == Qt::Key_Left) {
         // check if the basket is not at the left border of the window
         if (prevX > 0) {
-            setPos(prevX - BASKET_MOVE_STEP, pos().y());
+            setPos(prevX - basketMoveStep, pos().y());
         }
     }
     else if (event->key() == Qt::Key_Right) {
         // check if the basket is not at the right border of the window
         if (prevX + BASKET_SIZE < BACKGROUND_WIDTH) {
-            setPos(prevX + BASKET_MOVE_STEP, pos().y());
+            setPos(prevX + basketMoveStep, pos().y());
         }
     }
     else {
