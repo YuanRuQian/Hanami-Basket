@@ -3,12 +3,26 @@
 
 #include <QObject>
 
+enum GameLevel {
+    Easy,
+    Medium,
+    Hard
+};
+
+struct GameLevelConfig {
+    int BASKET_MOVE_STEP;
+    int CHERRYBLOSSOM_FALLING_SPEED;
+};
+
+
 class GameStateMachine : public QObject
 {
     Q_OBJECT
 
 public:
-    static GameStateMachine* instance(); // Static method to get the singleton instance
+    static GameStateMachine* instance();
+    GameLevelConfig getCurrentGameLevelConfig();
+    QString getCurrentGameLevelLabelText();
 
 private:
     // Private constructor and destructor to prevent direct instantiation and deletion
@@ -18,12 +32,17 @@ private:
     // Singleton instance
     static GameStateMachine* m_instance;
 
+    std::map<GameLevel, GameLevelConfig> GAME_LEVEL_CONFIG;
+
+
 signals:
     void gameover();
     void restartGame();
     void scoreUpdated(int score);
     void livesCountUpdated(int livesCount);
     void terminateTheGame();
+    void gameLevelUpdated(GameLevel gameLevel);
+
 
 public slots:
     void handleBasketCollision();
@@ -32,6 +51,9 @@ public slots:
 private:
     int score;
     int livesCount;
+    GameLevel gameLevel;
+    void updateGameLevel();
+    void setUpGameLevelConfig();
 };
 
 #endif // GAMESTATEMACHINE_H

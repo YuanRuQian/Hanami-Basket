@@ -13,6 +13,12 @@ private:
 
     QFont labelFont;
 
+    QLabel* gameLevelTextLabel;
+    QLabel* gameLevelValueLabel;
+
+    void setUpGameLevelLabels();
+
+
     QLabel* scoreTextLabel;
     QLabel* scoreCountLabel;
 

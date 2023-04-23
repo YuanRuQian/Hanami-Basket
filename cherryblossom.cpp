@@ -36,8 +36,12 @@ void CherryBlossom::updatePixmap()
 
 void CherryBlossom::falling()
 {
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+
+    int fallingSpeed = gameStateMachine->getCurrentGameLevelConfig().CHERRYBLOSSOM_FALLING_SPEED;
+
     // move the cherry blossom downwards
-    setPos(x(), y() + CHERRYBLOSSOM_FALLING_SPEED);
+    setPos(x(), y() + fallingSpeed);
 
     // add a slight horizontal oscillation to imitate the randomness of real world petal falling movement
     qreal dx = qSin(y() / CHERRYBLOSSOM_WIND_FREQUENCY) * CHERRYBLOSSOM_WIND_EFFECT;

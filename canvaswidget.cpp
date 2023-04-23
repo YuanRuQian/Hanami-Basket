@@ -16,6 +16,13 @@ CanvasWidget::CanvasWidget(QApplication* app, QWidget *parent)
     labelFont.setBold(true);
     labelFont.setPointSize(16);
 
+    setUpGameLevelLabels();
+
+    QHBoxLayout *gameLevelLayout = new QHBoxLayout;
+    gameLevelLayout->addWidget(gameLevelTextLabel);
+    gameLevelLayout->addWidget(gameLevelValueLabel);
+    gameLevelLayout->setAlignment(Qt::AlignCenter);
+
     setUpLivesLabels();
 
     QHBoxLayout *livesLayout = new QHBoxLayout;
@@ -31,6 +38,7 @@ CanvasWidget::CanvasWidget(QApplication* app, QWidget *parent)
     scoreLayout->setAlignment(Qt::AlignCenter);
 
     QHBoxLayout *infoLayout = new QHBoxLayout;
+    infoLayout->addLayout(gameLevelLayout);
     infoLayout->addLayout(livesLayout);
     infoLayout->addLayout(scoreLayout);
 
@@ -60,6 +68,16 @@ CanvasWidget::CanvasWidget(QApplication* app, QWidget *parent)
     connect(gameStateMachine, &GameStateMachine::livesCountUpdated, soundEffectManager, &SoundEffectManager::playMissSound);
 }
 
+void CanvasWidget::setUpGameLevelLabels() {
+    gameLevelTextLabel = new QLabel("Game Level: ");
+
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    gameLevelValueLabel = new QLabel(gameStateMachine->getCurrentGameLevelLabelText());
+
+    gameLevelTextLabel->setFont(labelFont);
+    gameLevelValueLabel->setFont(labelFont);
+}
+
 
 void CanvasWidget::setUpScoreLabels() {
     scoreTextLabel = new QLabel("Your Score: ");
@@ -70,7 +88,7 @@ void CanvasWidget::setUpScoreLabels() {
 }
 
 void CanvasWidget::setUpLivesLabels() {
-    livesTextLabel = new QLabel("Your Lives: ");
+    livesTextLabel = new QLabel("Lives Left: ");
     livesCountLabel = new QLabel(QString::number(DEFAULT_LIVES));
 
     livesTextLabel->setFont(labelFont);
