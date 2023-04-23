@@ -11,7 +11,9 @@ SOURCES += \
     constants.cpp \
     gamestatemachine.cpp \
     main.cpp \
-    soundeffectmanager.cpp
+    soundeffectmanager.cpp \
+    user.cpp \
+    usertest.cpp
 
 RESOURCES += \
     resources.qrc
@@ -23,7 +25,11 @@ HEADERS += \
     cherryblossom.h \
     constants.h \
     gamestatemachine.h \
-    soundeffectmanager.h
+    soundeffectmanager.h \
+    user.h \
+    usertest.h
 
 DISTFILES += \
+    data/users/test_user.json \
+    data/users/user_test.json \
     gamemodel.qmodel
