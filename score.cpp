@@ -193,6 +193,3 @@ void Score::removeFile(QString path) {
     file.remove();
 }
 
-
-
-
