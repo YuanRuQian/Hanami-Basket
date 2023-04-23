@@ -1,6 +1,6 @@
 .DS_Store
 # data storage
-data/*
+data/users/*
 !data/users/user_test.json
 # C++ objects and libs
 *.slo
