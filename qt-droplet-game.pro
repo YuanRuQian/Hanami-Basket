@@ -36,6 +36,5 @@ HEADERS += \
 DISTFILES += \
     data/scores/global_best_score/global_best_score.json \
     data/scores/score_test.json \
-    data/users/test_user.json \
     data/users/user_test.json \
     gamemodel.qmodel

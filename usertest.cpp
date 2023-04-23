@@ -48,4 +48,5 @@ void UserTest::testAll() {
     UserTest::testCheckUsername();
     UserTest::testCheckUser();
     UserTest::testIsBirthday();
+    qDebug() << "User test passed!";
 }
