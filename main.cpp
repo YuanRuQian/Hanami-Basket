@@ -1,6 +1,7 @@
 
 #include "canvaswidget.h"
 #include "scoretest.h"
+#include "gamestatemachine.h"
 
 #include <QApplication>
 #include <QGraphicsView>
@@ -10,6 +11,9 @@ int main(int argc, char **argv) {
     ScoreTest scoreTest = ScoreTest();
     scoreTest.testAll();
     QApplication app (argc, argv);
+
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    gameStateMachine->setGameLevel(Medium);
 
     CanvasWidget* mainWidget = new CanvasWidget(&app);
 

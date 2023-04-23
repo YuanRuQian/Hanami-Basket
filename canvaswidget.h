@@ -1,6 +1,7 @@
 #ifndef CANVASWIDGET_H
 #define CANVASWIDGET_H
 
+#include "gamestatemachine.h"
 #include <QLabel>
 #include <QWidget>
 #include <QApplication>
@@ -37,7 +38,7 @@ private:
     void terminateTheGame();
     void updateScoreLabel(int newScore);
     void updateLivesLabel(int newLives);
-
+    void updateGameLevelLabel();
 };
 
 #endif // CANVASWIDGET_H

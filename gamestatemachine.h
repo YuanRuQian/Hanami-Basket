@@ -41,12 +41,13 @@ signals:
     void scoreUpdated(int score);
     void livesCountUpdated(int livesCount);
     void terminateTheGame();
-    void gameLevelUpdated(GameLevel gameLevel);
+    void gameLevelUpdated();
 
 
 public slots:
     void handleBasketCollision();
     void handleMissDetection();
+    void setGameLevel(GameLevel gameLevel);
 
 private:
     int score;

@@ -20,7 +20,7 @@ GameStateMachine* GameStateMachine::instance()
 GameStateMachine::GameStateMachine(QObject *parent)
     : QObject(parent)
 {
-    gameLevel = Medium;
+    gameLevel = Easy;
     setUpGameLevelConfig();
     score = 0;
     livesCount = DEFAULT_LIVES;
@@ -49,6 +49,11 @@ void GameStateMachine::handleMissDetection()
         qDebug() << "Oops you died... Bye...\n\n";
         emit terminateTheGame();
     }
+}
+
+void GameStateMachine::setGameLevel(GameLevel newGameLevel) {
+    gameLevel = newGameLevel;
+    emit gameLevelUpdated();
 }
 
 void GameStateMachine::setUpGameLevelConfig() {

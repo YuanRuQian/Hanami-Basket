@@ -59,6 +59,7 @@ CanvasWidget::CanvasWidget(QApplication* app, QWidget *parent)
 
     setLayout(mainLayout);
 
+    connect(gameStateMachine, &GameStateMachine::gameLevelUpdated, this, &CanvasWidget::updateGameLevelLabel);
     connect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
     connect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
     connect(gameStateMachine, &GameStateMachine::terminateTheGame, this, &CanvasWidget::terminateTheGame);
@@ -107,6 +108,11 @@ void CanvasWidget::updateLivesLabel(int newLives) {
     livesCountLabel->setText(QString::number(newLives));
 }
 
+void CanvasWidget::updateGameLevelLabel() {
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    gameLevelValueLabel->setText(gameStateMachine->getCurrentGameLevelLabelText());
+}
+
 void CanvasWidget::terminateTheGame() {
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
 
@@ -121,7 +127,5 @@ void CanvasWidget::terminateTheGame() {
 
     disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, soundEffectManager, &SoundEffectManager::playCollisionSound);
     disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, soundEffectManager, &SoundEffectManager::playMissSound);
-
-
 }
 
