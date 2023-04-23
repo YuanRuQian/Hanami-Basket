@@ -4,6 +4,7 @@
 #include "constants.h"
 #include "score.h"
 #include <QDebug>
+#include <cmath>
 
 // Initialize the static instance to nullptr
 GameStateMachine* GameStateMachine::m_instance = nullptr;
@@ -62,13 +63,13 @@ void GameStateMachine::setGameLevel(GameLevel newGameLevel) {
 void GameStateMachine::setUpGameLevelConfig() {
     // Insert values for each game level
     GameLevelConfig easyConfig = {50, 30};    // Example values for Easy level
-    GAME_LEVEL_CONFIG[Easy] = easyConfig;
+    GAME_DEFAULT_LEVEL_CONFIG[Easy] = easyConfig;
 
     GameLevelConfig mediumConfig = {40, 40};  // Example values for Medium level
-    GAME_LEVEL_CONFIG[Medium] = mediumConfig;
+    GAME_DEFAULT_LEVEL_CONFIG[Medium] = mediumConfig;
 
     GameLevelConfig hardConfig = {30, 50};   // Example values for Hard level
-    GAME_LEVEL_CONFIG[Hard] = hardConfig;
+    GAME_DEFAULT_LEVEL_CONFIG[Hard] = hardConfig;
 }
 
 QString GameStateMachine::getCurrentGameLevelLabelText() {
@@ -91,8 +92,21 @@ QString GameStateMachine::getCurrentGameLevelLabelText() {
     return QString::fromStdString(labelText);
 }
 
-GameLevelConfig GameStateMachine::getCurrentGameLevelConfig() {
-    return GAME_LEVEL_CONFIG[gameLevel];
+GameLevelConfig GameStateMachine::getDefaultGameLevelConfig() {
+    return GAME_DEFAULT_LEVEL_CONFIG[gameLevel];
+}
+
+float GameStateMachine::getCurrentCherryBlossomFallingSpeed() {
+    GameLevelConfig gameLevelDefaultConfig = getDefaultGameLevelConfig();
+    float deafultSpeed = gameLevelDefaultConfig.CHERRYBLOSSOM_FALLING_SPEED;
+    int cherryBlossomCollected = score / SCORE_PER_COLLISION;
+    int speedUpFactorTimes = std::floor((float)cherryBlossomCollected / CHERRYBLOSSOM_SPEEDUP_THRESHOLD);
+    return std::pow(CHERRYBLOSSOM_SPEEDUP_FACTOR, speedUpFactorTimes) * deafultSpeed;
+}
+
+float GameStateMachine::getCurrentBasketMoveStep() {
+    GameLevelConfig gameLevelDefaultConfig = getDefaultGameLevelConfig();
+    return gameLevelDefaultConfig.BASKET_MOVE_STEP;
 }
 
 GameStateMachine::~GameStateMachine()
