@@ -3,7 +3,7 @@
 data/users/*
 !data/users/user_test.json
 data/scores/*
-!data/scores/score_test.json
+!data/scores/user_test.json
 !data/scores/global_best_score
 # C++ objects and libs
 *.slo

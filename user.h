@@ -26,6 +26,7 @@ public:
     static bool isBirthday(QString username);
     static QString getUserFilePath(QString username);
     static QJsonObject getUserData(QString username);
+    static QString getAvatarPath(QString username);
 };
 
 #endif // USER_H

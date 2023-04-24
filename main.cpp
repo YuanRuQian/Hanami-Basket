@@ -3,6 +3,7 @@
 #include "scoretest.h"
 #include "usertest.h"
 #include "gamestatemachine.h"
+#include "user.h"
 
 #include <QApplication>
 #include <QGraphicsView>
