@@ -9,8 +9,8 @@
 #include <QVBoxLayout>
 
 int main(int argc, char **argv) {
-    //  UserTest::testAll();
-    // ScoreTest().testAll();
+    UserTest().testAll();
+    ScoreTest().testAll();
 
     QApplication app (argc, argv);
     GameStateMachine* gameStateMachine = GameStateMachine::instance();

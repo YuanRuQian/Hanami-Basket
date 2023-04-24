@@ -1,4 +1,5 @@
 #include "user.h"
+#include "jsonfileutils.h"
 #include <QDir>
 #include <QRegularExpression>
 #include <QJsonObject>
@@ -9,6 +10,7 @@ QString User::USER_PATH = "../../../../Hanami-Basket/data/users/";
 QString User::AVATAR_PATH = "../../../../Hanami-Basket/data/avatars/";
 QString User::SCORE_PATH = "../../../../Hanami-Basket/data/scores/";
 
+// create a new User Object
 User::User(QString uname, QString pwd, QString firstN, QString lastN, QString gender, QString avatar, QDate bDay) {
     username = uname;
     password = pwd;
@@ -81,16 +83,7 @@ bool User::addUser(User user) {
     jsonObj["gender"] = user.gender;
     jsonObj["avatar"] = user.avatar;
     jsonObj["birthday"] = user.birthday.toString("yyyy-MM-dd");
-    QJsonDocument jsonDoc(jsonObj);
-    QFile file(User::getUserFilePath(user.username));
-    if (!file.open(QIODevice::WriteOnly| QIODevice::Truncate)) {
-        qDebug() << "can't open the file!";
-        return false;
-    }
-    QTextStream stream(&file);
-    stream << jsonDoc.toJson();
-    file.close();
-    return true;
+    return JsonFileUtils::writeObject(User::getUserFilePath(user.username), jsonObj);
 }
 
 /**
@@ -104,19 +97,21 @@ bool User::isBirthday(QString username) {
     return today.month() == birthday.month() && today.day() == birthday.day();
 }
 
+/**
+ * @brief Get the file path of a user's profile.
+ * @param username -- the specified username
+ * @return the file path of the user's profile
+ */
 QString User::getUserFilePath(QString username) {
     return User::USER_PATH + username + QString(".json");
 }
 
+/**
+ * @brief Read a user's profile and store it in a QJsonObject.
+ * @param username -- the specified username
+ * @return A QJsonObject of the user's profile
+ */
 QJsonObject User::getUserData(QString username) {
-    QFile file(User::getUserFilePath(username));
-    if (!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "can't open the file!";
-    }
-    QTextStream stream(&file);
-    QString str = stream.readAll();
-    file.close();
-    QJsonParseError jsonError;
-    QJsonDocument doc = QJsonDocument::fromJson(str.toUtf8(), &jsonError);
+    QJsonDocument doc = JsonFileUtils::readFile(User::getUserFilePath(username));
     return doc.object();
 }

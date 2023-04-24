@@ -1,5 +1,6 @@
 #include "scoretest.h"
 #include "score.h"
+#include "jsonfileutils.h"
 
 #include <QRandomGenerator>
 #include <QDateTime>
@@ -57,9 +58,9 @@ void ScoreTest::testAll() {
     testAddScoreAndGlobalBestScore();
     testGetScoreHistory();
     qDebug() << "Score test passed!";
-    Score::removeFile(Score::getScoreFilePath(username1));
-    Score::removeFile(Score::getScoreFilePath(username2));
-    Score::removeFile(Score::GLOBAL_BEST_SCORE_PATH);
+    JsonFileUtils::removeFile(Score::getScoreFilePath(username1));
+    JsonFileUtils::removeFile(Score::getScoreFilePath(username2));
+    JsonFileUtils::removeFile(Score::GLOBAL_BEST_SCORE_PATH);
     Score::updateGlobalBestScore(Score("null", QDateTime::currentDateTime(), 0));
 }
 

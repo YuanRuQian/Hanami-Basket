@@ -10,6 +10,7 @@ SOURCES += \
     cherryblossom.cpp \
     constants.cpp \
     gamestatemachine.cpp \
+    jsonfileutils.cpp \
     main.cpp \
     score.cpp \
     scoretest.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     cherryblossom.h \
     constants.h \
     gamestatemachine.h \
+    jsonfileutils.h \
     score.h \
     scoretest.h \
     soundeffectmanager.h \
