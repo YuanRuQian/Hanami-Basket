@@ -3,6 +3,8 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 greaterThan(QT_MAJOR_VERSION, 4): QT+=multimedia
 
+ICON = icon.icns
+
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
