@@ -1,5 +1,6 @@
 #include "user.h"
 #include "jsonfileutils.h"
+
 #include <QDir>
 #include <QRegularExpression>
 #include <QJsonObject>
@@ -10,7 +11,9 @@ QString User::USER_PATH = "../../../../Hanami-Basket/data/users/";
 QString User::AVATAR_PATH = "../../../../Hanami-Basket/data/avatars/";
 QString User::SCORE_PATH = "../../../../Hanami-Basket/data/scores/";
 
+
 // create a new User Object
+
 User::User(QString uname, QString pwd, QString firstN, QString lastN, QString gender, QString avatar, QDate bDay) {
     username = uname;
     password = pwd;

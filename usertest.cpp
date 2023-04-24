@@ -33,9 +33,10 @@ void UserTest::testAddUser() {
     assert(User::addUser(user4) == success);
 }
 
+
 void UserTest::testCheckUsername() {
-    assert(User::checkUsername(username1));
-    assert(User::checkUsername(username2));
+    assert(User::checkUsername("Gloria_test"));
+    assert(User::checkUsername("Lauryn_test"));
     assert(!User::checkUsername("Amy"));
 }
 
