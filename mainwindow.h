@@ -19,6 +19,8 @@ public:
     ~MainWindow();
 
 private slots:
+    void play_background_music();
+
     void on_start_clicked();
 
     void on_scores_clicked();

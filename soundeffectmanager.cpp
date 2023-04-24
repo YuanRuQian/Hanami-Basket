@@ -5,6 +5,7 @@ SoundEffectManager* SoundEffectManager::m_instance = nullptr;
 
 SoundEffectManager::SoundEffectManager(QObject *parent) : QObject(parent)
 {
+    m_backgroundMusicPlayer.setSource(QUrl::fromLocalFile("://sounds/anExcerptOnCherryBlossoms.wav"));
 
     m_collisionPlayer.setSource(QUrl::fromLocalFile("://sounds/fuiyoh.wav"));
 
@@ -38,6 +39,16 @@ void SoundEffectManager::playMissSound()
         return;
     }
     m_missPlayer.play();
+}
+
+void SoundEffectManager::playBackgroundMusic() {
+    if(m_backgroundMusicPlayer.isPlaying()) {
+        return;
+    }
+
+    m_backgroundMusicPlayer.setLoopCount(QSoundEffect::Infinite);
+
+    m_backgroundMusicPlayer.play();
 }
 
 bool SoundEffectManager::isSoundManagerFree() {
