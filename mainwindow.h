@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDate>
+#include <QGraphicsPixmapItem>
 
 #include "canvaswidget.h"
 
