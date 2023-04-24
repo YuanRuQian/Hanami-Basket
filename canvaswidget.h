@@ -10,8 +10,6 @@ class CanvasWidget : public QWidget
 {
     Q_OBJECT
 private:
-    QApplication* gameApp;
-
     QFont labelFont;
 
     QLabel* gameLevelTextLabel;
@@ -31,7 +29,7 @@ private:
     void setUpLivesLabels();
 
 public:
-    CanvasWidget(QApplication* gameApp, QWidget *parent = nullptr);
+    CanvasWidget(QWidget *parent = nullptr);
 
 
 private:

@@ -8,8 +8,8 @@
 #include <QMessageBox>
 
 
-CanvasWidget::CanvasWidget(QApplication* app, QWidget *parent)
-    : QWidget{parent}, gameApp(app)
+CanvasWidget::CanvasWidget(QWidget *parent)
+    : QWidget{parent}
 {
     setWindowTitle("Hanami Basket");
 
@@ -120,8 +120,6 @@ void CanvasWidget::terminateTheGame() {
     disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
 
     QMessageBox::information(nullptr, "Game Over", "Oops...You died...");
-
-    gameApp->quit();
 
     SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
 

@@ -13,17 +13,13 @@ int main(int argc, char **argv) {
     ScoreTest().testAll();
 
     QApplication app (argc, argv);
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+    gameStateMachine->setGameLevelWithText(QString("Medium"));
+    gameStateMachine->setGameUsername(QString("jojo"));
 
-//    GameStateMachine* gameStateMachine = GameStateMachine::instance();
-//    gameStateMachine->setGameLevelWithText(QString("Medium"));
+    CanvasWidget* mainWidget = new CanvasWidget();
 
-//    CanvasWidget* mainWidget = new CanvasWidget(&app);
-
-//    mainWidget->show();
-
-
-    MainWindow *w = new MainWindow(&app);
-    w->show();
+    mainWidget->show();
 
     return app.exec();
 }
