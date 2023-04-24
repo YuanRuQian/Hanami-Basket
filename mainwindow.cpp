@@ -3,12 +3,15 @@
 #include "canvaswidget.h"
 #include "user.h"
 #include "score.h"
+#include "soundeffectmanager.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    play_background_music();
 
     ui->congrats->hide();
 
@@ -44,6 +47,11 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::play_background_music() {
+    SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
+    soundEffectManager->playBackgroundMusic();
 }
 
 

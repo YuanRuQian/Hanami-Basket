@@ -16,6 +16,7 @@ public:
 
     void playCollisionSound();
     void playMissSound();
+    void playBackgroundMusic();
 
 private:
     // Private constructor and destructor to prevent direct instantiation and deletion
@@ -28,6 +29,7 @@ private:
     // Media players for playing sound effects
     QSoundEffect m_collisionPlayer;
     QSoundEffect m_missPlayer;
+    QSoundEffect m_backgroundMusicPlayer;
 
     QList<QSoundEffect*> m_soundEffects;
 

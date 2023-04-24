@@ -41,7 +41,6 @@ void CherryBlossom::falling()
 
     float fallingSpeed = gameStateMachine->getCurrentCherryBlossomFallingSpeed();
 
-    qDebug() << "\n\nCurrent falling speed: " << fallingSpeed << "\n\n";
     // move the cherry blossom downwards
     setPos(x(), y() + fallingSpeed);
 
