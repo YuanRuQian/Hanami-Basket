@@ -135,6 +135,7 @@ void MainWindow::on_loginButton_clicked()
 
                 // set Birthday Greeting
                 if(User::isBirthday(userProfileName)){
+                    ui->congrats->setText("Happy Birthday, " + userProfileName + "!");
                     ui->congrats->show();
                 }
 
