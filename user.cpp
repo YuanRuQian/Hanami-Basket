@@ -10,6 +10,7 @@
 QString User::USER_PATH = "../../../../Hanami-Basket/data/users/";
 QString User::AVATAR_PATH = "../../../../Hanami-Basket/data/avatars/";
 QString User::SCORE_PATH = "../../../../Hanami-Basket/data/scores/";
+QString User::GUEST_AVATAR_PATH = "../../../../Hanami-Basket/images/guest.jpeg";
 
 
 // create a new User Object
@@ -121,7 +122,10 @@ QJsonObject User::getUserData(QString username) {
     return doc.object();
 }
 
-QString User::getAvatarPath(QString username) {
+QString User::getAvatarPath(QString username, bool isGuest) {
+    if (isGuest) {
+        return GUEST_AVATAR_PATH;
+    }
     QJsonObject obj = User::getUserData(username);
     return AVATAR_PATH + obj["avatar"].toString();
 }

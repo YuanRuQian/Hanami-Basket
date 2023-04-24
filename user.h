@@ -19,6 +19,7 @@ public:
     static QString USER_PATH;
     static QString AVATAR_PATH;
     static QString SCORE_PATH;
+    static QString GUEST_AVATAR_PATH;
     QString username;
     QString password;
     QString firstName;
@@ -34,7 +35,7 @@ public:
     static bool isBirthday(QString username);
     static QString getUserFilePath(QString username);
     static QJsonObject getUserData(QString username);
-    static QString getAvatarPath(QString username);
+    static QString getAvatarPath(QString username, bool isGuest);
 };
 
 #endif // USER_H
