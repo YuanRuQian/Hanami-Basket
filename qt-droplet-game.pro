@@ -49,7 +49,7 @@ FORMS += \
 
 DISTFILES += \
     data/scores/global_best_score/global_best_score.json \
-    data/scores/score_test.json \
+    data/scores/user_test.json \
     data/users/user_test.json \
     gamemodel.qmodel
 
