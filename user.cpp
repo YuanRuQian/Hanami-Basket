@@ -22,13 +22,13 @@ User::User(QString uname, QString pwd, QString firstN, QString lastN, QString ge
 }
 
 /**
- * @brief Check if a username already exists.
+ * @brief Check if a username already exists. (case insensitive)
  * @param username
  * @return true if the username exists. Otherwise return false.
  */
 bool User::checkUsername(QString username) {
     QDir dir(User::USER_PATH);
-    QStringList user = dir.entryList(QStringList() << (username + QString(".json")));
+    QStringList user = dir.entryList(QStringList() << (username.toLower() + QString(".json")));
     return user.size() == 1;
 }
 
@@ -66,14 +66,14 @@ bool User::checkUser(QString username, QString password) {
  * @param user
  * @return true if the user is successfully added. Otherwise return false.
  */
-bool User::addUser(User user) {
+error_t User::addUser(User user) {
     if (User::checkUsername(user.username)) {
         qDebug() << user.username << "already exists!";
-        return false;
+        return duplicate_username;
     }
     if (!User::checkPassword(user.password)) {
         qDebug() << user.password << "is invalid!";
-        return false;
+        return invalid_password;
     }
     QJsonObject jsonObj;
     jsonObj["username"] = user.username;
@@ -99,11 +99,13 @@ bool User::isBirthday(QString username) {
 
 /**
  * @brief Get the file path of a user's profile.
+ * (a user's file name is the lowercase of its
+ * username with the extension ".json")
  * @param username -- the specified username
  * @return the file path of the user's profile
  */
 QString User::getUserFilePath(QString username) {
-    return User::USER_PATH + username + QString(".json");
+    return User::USER_PATH + username.toLower() + QString(".json");
 }
 
 /**

@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-    "avatar": "avatar1.jpeg",
-=======
-    "avatar": "avatar1.jpg",
->>>>>>> a77c263 (edit .gitignore)
+    "avatar": "avatar.jpeg",
     "birthday": "1998-12-09",
     "firstName": "ABC",
     "gender": "Woman",

@@ -4,6 +4,14 @@
 #include <QString>
 #include <QDateTime>
 
+enum error_t {
+    success,
+    duplicate_username,
+    invalid_password,
+    wrong_password,
+    open_file_failure
+};
+
 
 class User
 {
@@ -22,7 +30,7 @@ public:
     static bool checkUsername(QString username);
     static bool checkPassword(QString password);
     static bool checkUser(QString username, QString password);
-    static bool addUser(User user);
+    static error_t addUser(User user);
     static bool isBirthday(QString username);
     static QString getUserFilePath(QString username);
     static QJsonObject getUserData(QString username);
