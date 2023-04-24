@@ -22,7 +22,7 @@ void Basket::keyPressEvent(QKeyEvent *event)
 
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
 
-    int basketMoveStep = gameStateMachine->getCurrentGameLevelConfig().BASKET_MOVE_STEP;
+    float basketMoveStep = gameStateMachine->getCurrentBasketMoveStep();
 
     if (event->key() == Qt::Key_Left) {
         // check if the basket is not at the left border of the window

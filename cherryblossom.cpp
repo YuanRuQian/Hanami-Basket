@@ -3,6 +3,7 @@
 #include "gamestatemachine.h"
 #include <QTimer>
 #include <QMovie>
+#include <QDebug>
 
 
 CherryBlossom::CherryBlossom(QObject *parent)
@@ -38,8 +39,9 @@ void CherryBlossom::falling()
 {
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
 
-    int fallingSpeed = gameStateMachine->getCurrentGameLevelConfig().CHERRYBLOSSOM_FALLING_SPEED;
+    float fallingSpeed = gameStateMachine->getCurrentCherryBlossomFallingSpeed();
 
+    qDebug() << "\n\nCurrent falling speed: " << fallingSpeed << "\n\n";
     // move the cherry blossom downwards
     setPos(x(), y() + fallingSpeed);
 
