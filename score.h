@@ -28,10 +28,6 @@ public:
     static QJsonArray getScoreData(QString username);
     static Score jsonObjectToScore(QJsonObject obj);
     static QJsonObject scoreToJsonObject(Score score, bool addUsername = false);
-    static void write(QString path, QJsonObject obj);
-    static void write(QString path, QJsonArray arr);
-    static QJsonDocument read(QString path);
-    static void removeFile(QString path);
 };
 
 #endif // SCORE_H

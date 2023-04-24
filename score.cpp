@@ -1,5 +1,5 @@
 #include "score.h"
-//#include "QtCore/qjsonobject.h"
+#include "jsonfileutils.h"
 
 #include <QFile>
 #include <QJsonParseError>
@@ -46,7 +46,7 @@ void Score::addScore(Score score) {
     QJsonArray arr = getScoreData(score.username);
     QJsonObject obj = scoreToJsonObject(score);
     arr.append(obj);
-    Score::write(Score::getScoreFilePath(score.username), arr);
+    JsonFileUtils::writeArray(Score::getScoreFilePath(score.username), arr);
 }
 
 /**
@@ -54,7 +54,7 @@ void Score::addScore(Score score) {
  * @return the Score object of the gloval best score.
  */
 Score Score::getGlobalBestScore() {
-    QJsonDocument doc = read(Score::GLOBAL_BEST_SCORE_PATH);
+    QJsonDocument doc = JsonFileUtils::readFile(Score::GLOBAL_BEST_SCORE_PATH);
     Score score = Score::jsonObjectToScore(doc.object());
     return score;
 }
@@ -72,12 +72,12 @@ bool Score::updateGlobalBestScore(Score score) {
         Score best = Score::getGlobalBestScore();
         if (score.score > best.score) {
             QJsonObject newBest = scoreToJsonObject(score, true);
-            write(Score::GLOBAL_BEST_SCORE_PATH, newBest);
+            JsonFileUtils::writeObject(Score::GLOBAL_BEST_SCORE_PATH, newBest);
             return true;
         }
         return false;
     }
-    write(Score::GLOBAL_BEST_SCORE_PATH, scoreToJsonObject(score, true));
+    JsonFileUtils::writeObject(Score::GLOBAL_BEST_SCORE_PATH, scoreToJsonObject(score, true));
     return true;
 }
 
@@ -102,7 +102,7 @@ QString Score::getScoreFilePath(QString username) {
  * @return A QJsonArray of the user's score data.
  */
 QJsonArray Score::getScoreData(QString username) {
-    QJsonDocument doc = read(Score::getScoreFilePath(username));
+    QJsonDocument doc = JsonFileUtils::readFile(Score::getScoreFilePath(username));
     return doc.array();
 }
 
@@ -131,65 +131,5 @@ QJsonObject Score::scoreToJsonObject(Score score, bool addUsername) {
         obj["username"] = score.username;
     }
     return obj;
-}
-
-/**
- * @brief Write a QJsonObject to a specified path.
- * @param path -- the path to be written in
- * @param obj -- the QJsonObject to be written
- */
-void Score::write(QString path, QJsonObject obj) {
-    QFile file(path);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        QTextStream in(&file);
-        QJsonDocument doc(obj);
-        in << doc.toJson();
-        file.close();
-    } else {
-        qDebug() << "can't open the file!";
-    }
-}
-
-/**
- * @brief Write a QJsonArray to a specified path.
- * @param path -- the path to be written in
- * @param obj -- the QJsonArray to be written
- */
-void Score::write(QString path, QJsonArray arr) {
-    QFile file(path);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        QTextStream in(&file);
-        QJsonDocument doc(arr);
-        in << doc.toJson();
-        file.close();
-    } else {
-        qDebug() << "can't open the file!";
-    }
-}
-
-/**
- * @brief Read a Json file and store it in a QJsonDocument
- * @param path -- the file path to read
- * @return the QJsonDocument of the file
- */
-QJsonDocument Score::read(QString path) {
-    QFile file(path);
-    if (!file.exists()) {
-        return QJsonDocument();
-    }
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "can't open the file: " << path;
-    }
-    QTextStream stream(&file);
-    QString str = stream.readAll();
-    file.close();
-    QJsonParseError jsonError;
-    QJsonDocument doc = QJsonDocument::fromJson(str.toUtf8(), &jsonError);
-    return doc;
-}
-
-void Score::removeFile(QString path) {
-    QFile file(path);
-    file.remove();
 }
 
