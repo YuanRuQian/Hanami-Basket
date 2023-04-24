@@ -44,7 +44,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <property name="styleSheet">
@@ -93,7 +93,7 @@ padding: 1px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>-1</pointsize>
         <italic>false</italic>
         <bold>true</bold>
@@ -125,7 +125,7 @@ padding: 2px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>-1</pointsize>
         <italic>false</italic>
         <bold>true</bold>
@@ -157,7 +157,7 @@ padding: 1px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>-1</pointsize>
         <italic>false</italic>
         <bold>true</bold>
@@ -191,7 +191,7 @@ padding: 2px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>-1</pointsize>
         <italic>false</italic>
         <bold>true</bold>
@@ -232,7 +232,7 @@ padding: 1px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
@@ -280,7 +280,7 @@ padding: 2px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -303,7 +303,7 @@ padding: 2px;
         <widget class="QLabel" name="gameNameLabel">
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>20</pointsize>
           </font>
          </property>
@@ -359,7 +359,7 @@ background-color:rgb(255, 255, 255);
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
@@ -416,7 +416,7 @@ padding: 2px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -444,7 +444,7 @@ padding: 2px;
         <widget class="QLabel" name="gameNameLabel_3">
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>20</pointsize>
           </font>
          </property>
@@ -483,7 +483,7 @@ padding: 2px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -512,7 +512,7 @@ padding: 2px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
@@ -566,7 +566,7 @@ padding: 2px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
@@ -623,7 +623,7 @@ padding: 2px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
@@ -676,7 +676,7 @@ padding: 2px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>12</pointsize>
            <bold>true</bold>
           </font>
@@ -735,7 +735,7 @@ padding: 2px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
@@ -803,7 +803,7 @@ padding: 2px;
          </property>
          <property name="font">
           <font>
-           <family>Century Gothic</family>
+           <family>.AppleSystemUIFont</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
@@ -931,7 +931,7 @@ padding: 2px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>-1</pointsize>
         <italic>false</italic>
         <bold>true</bold>
@@ -963,7 +963,7 @@ padding: 1px;
       </property>
       <property name="font">
        <font>
-        <family>Century Gothic</family>
+        <family>.AppleSystemUIFont</family>
         <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
@@ -1522,7 +1522,7 @@ padding: 2px;
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
