@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1000</width>
+      <height>538</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="startPage">
+     <property name="styleSheet">
+      <string notr="true">#startPage{border-image: url(:/images/background.png) cover;}</string>
+     </property>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>170</y>
+        <width>352</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="2" column="0">
+        <widget class="QPushButton" name="start">
+         <property name="styleSheet">
+          <string notr="true">#start{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="scores">
+         <property name="styleSheet">
+          <string notr="true">#scores{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Scores</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QTextBrowser" name="congrats">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>350</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>350</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#congrats{
+background-color:rgba(255, 255, 255, 217);
+color: rgb(255, 38, 0);
+font: bold 23px;
+padding: 2px;
+text-align: center;
+}</string>
+         </property>
+         <property name="placeholderText">
+          <string>Happy Birthday!</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>171</width>
+        <height>72</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="profile_1">
+       <item row="0" column="1">
+        <widget class="QLabel" name="userName_1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#userName_1{
+background-color:rgba(255, 255, 255, 128);
+color: rgb(0, 0, 0);
+font: bold 12px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>userName</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="currentDate_1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#currentDate_1{
+background-color:rgba(214, 214, 214, 128);
+color: rgb(0, 0, 0);
+font: bold 12px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2">
+        <widget class="QGraphicsView" name="avatar_1">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>70</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="levelPage">
+     <property name="styleSheet">
+      <string notr="true">#levelPage{border-image: url(:/images/background.png) cover;}</string>
+     </property>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>180</y>
+        <width>330</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="easy">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#easy{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Easy</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="medium">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#medium{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Medium</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="hard">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#hard{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Hard</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="back1">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>280</y>
+        <width>100</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#back1{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>171</width>
+        <height>72</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="profile_2">
+       <item row="0" column="1">
+        <widget class="QLabel" name="userName_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#userName_2{
+background-color:rgba(255, 255, 255, 128);
+color: rgb(0, 0, 0);
+font: bold 12px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>userName</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="currentDate_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#currentDate_2{
+background-color:rgba(214, 214, 214, 128);
+color: rgb(0, 0, 0);
+font: bold 12px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2">
+        <widget class="QGraphicsView" name="avatar_2">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>70</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="scorePage">
+     <property name="styleSheet">
+      <string notr="true">#scorePage{border-image: url(:/images/background.png) cover;}</string>
+     </property>
+     <widget class="QTextBrowser" name="scoreHistory">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>170</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#scoreHistory{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+      </property>
+      <property name="placeholderText">
+       <string>Best Score: 100 (username)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="back2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>380</y>
+        <width>100</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#back2{
+background-color:rgb(214, 214, 214);
+color: rgb(0, 0, 0);
+border-style:outset;
+border-width: 2px;
+border-color:rgb(255, 255, 255);
+font: bold 14px;
+padding: 2px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>171</width>
+        <height>72</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="profile_3">
+       <item row="0" column="1">
+        <widget class="QLabel" name="userName_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#userName_3{
+background-color:rgba(255, 255, 255, 128);
+color: rgb(0, 0, 0);
+font: bold 12px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>userName</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="currentDate_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#currentDate_3{
+background-color:rgba(214, 214, 214, 128);
+color: rgb(0, 0, 0);
+font: bold 12px;
+padding: 2px;
+}</string>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2">
+        <widget class="QGraphicsView" name="avatar_3">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>70</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="gamePage"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
