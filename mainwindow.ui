@@ -70,7 +70,7 @@
       <property name="styleSheet">
        <string notr="true">#loginButton{
 background-color:rgba(169, 169, 169, 128);
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 border-style:outset;
 border-width: 1px;
 border-color:rgba(255, 255, 255, 128);
@@ -101,7 +101,7 @@ padding: 1px;
       </property>
       <property name="styleSheet">
        <string notr="true">#signupLabel{
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 font: bold 12px;
 padding: 2px;
 }
@@ -134,7 +134,7 @@ padding: 2px;
       <property name="styleSheet">
        <string notr="true">#signupButton{
 background-color:rgba(169, 169, 169, 128);
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 border-style:outset;
 border-width: 1px;
 border-color:rgba(255, 255, 255, 128);
@@ -165,7 +165,7 @@ padding: 1px;
       </property>
       <property name="styleSheet">
        <string notr="true">#guestLabel{
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 font: bold 12px;
 padding: 2px;
 }</string>
@@ -200,7 +200,7 @@ padding: 2px;
       <property name="styleSheet">
        <string notr="true">#guestButton{
 background-color:rgba(169, 169, 169, 128);
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 border-style:outset;
 border-width: 1px;
 border-color:rgba(255, 255, 255, 128);
@@ -218,7 +218,7 @@ padding: 1px;
         <x>80</x>
         <y>150</y>
         <width>381</width>
-        <height>71</height>
+        <height>61</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="usernameLayout">
@@ -250,7 +250,7 @@ padding: 2px;
 }</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700; color:#323232;&quot;&gt;User Name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;User Name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -258,7 +258,7 @@ padding: 2px;
         <widget class="QPlainTextEdit" name="usernameText">
          <property name="maximumSize">
           <size>
-           <width>300</width>
+           <width>380</width>
            <height>30</height>
           </size>
          </property>
@@ -345,7 +345,7 @@ background-color:rgb(255, 255, 255);
         <x>80</x>
         <y>230</y>
         <width>381</width>
-        <height>71</height>
+        <height>61</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="passwordLayout">
@@ -388,7 +388,7 @@ padding: 2px;
          </property>
          <property name="maximumSize">
           <size>
-           <width>300</width>
+           <width>380</width>
            <height>30</height>
           </size>
          </property>
@@ -428,6 +428,33 @@ padding: 2px;
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aa557f;&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
+     <widget class="QLabel" name="backgroundLabel">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>401</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#backgroundLabel{background-color:rgba(214, 214, 214, 128)}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>backgroundLabel</zorder>
+     <zorder>loginButton</zorder>
+     <zorder>signupLabel</zorder>
+     <zorder>signupButton</zorder>
+     <zorder>guestLabel</zorder>
+     <zorder>guestButton</zorder>
+     <zorder>verticalLayoutWidget_2</zorder>
+     <zorder>instructionLabel</zorder>
+     <zorder>verticalLayoutWidget</zorder>
+     <zorder>verticalLayoutWidget_3</zorder>
+     <zorder>errorMessage</zorder>
     </widget>
     <widget class="QWidget" name="signupPage">
      <property name="styleSheet">
@@ -732,7 +759,7 @@ padding: 2px;
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>125</width>
            <height>30</height>
           </size>
          </property>
@@ -800,7 +827,7 @@ padding: 2px;
         <widget class="QLabel" name="genderLabel">
          <property name="maximumSize">
           <size>
-           <width>120</width>
+           <width>125</width>
            <height>30</height>
           </size>
          </property>
@@ -841,8 +868,7 @@ padding: 2px;
          </property>
          <property name="styleSheet">
           <string notr="true">#femaleButton{
-background-color:rgba(169, 169, 169, 128);
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 font: bold 12px;
 padding: 2px;
 }</string>
@@ -862,8 +888,7 @@ padding: 2px;
          </property>
          <property name="styleSheet">
           <string notr="true">#maleButton{
-background-color:rgba(169, 169, 169, 128);
-color: rgb(255, 255, 255);
+color: rgb(0,0,0);
 font: bold 12px;
 padding: 2px;
 }</string>
@@ -993,6 +1018,34 @@ padding: 1px;
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="backgroundLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>831</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#backgroundLabel_2{background-color:rgba(214, 214, 214, 128)}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>backgroundLabel_2</zorder>
+     <zorder>verticalLayoutWidget_7</zorder>
+     <zorder>instructionLabel_3</zorder>
+     <zorder>verticalLayoutWidget_8</zorder>
+     <zorder>verticalLayoutWidget_9</zorder>
+     <zorder>verticalLayoutWidget_10</zorder>
+     <zorder>verticalLayoutWidget_11</zorder>
+     <zorder>verticalLayoutWidget_12</zorder>
+     <zorder>verticalLayoutWidget_13</zorder>
+     <zorder>verticalLayoutWidget_14</zorder>
+     <zorder>signupButton_3</zorder>
+     <zorder>errorMessage_2</zorder>
     </widget>
     <widget class="QWidget" name="startPage">
      <property name="styleSheet">
