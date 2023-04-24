@@ -115,3 +115,8 @@ QJsonObject User::getUserData(QString username) {
     QJsonDocument doc = JsonFileUtils::readFile(User::getUserFilePath(username));
     return doc.object();
 }
+
+QString User::getAvatarPath(QString username) {
+    QJsonObject obj = User::getUserData(username);
+    return AVATAR_PATH + obj["avatar"].toString();
+}
