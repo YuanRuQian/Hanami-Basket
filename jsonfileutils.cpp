@@ -7,17 +7,17 @@
  * @param path -- the path to be written in
  * @param obj -- the QJsonObject to be written
  */
-bool JsonFileUtils::writeObject(QString path, QJsonObject obj) {
+error_t JsonFileUtils::writeObject(QString path, QJsonObject obj) {
     QFile file(path);
     if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         QTextStream in(&file);
         QJsonDocument doc(obj);
         in << doc.toJson();
         file.close();
-        return true;
+        return success;
     } else {
         qDebug() << "can't open the file!";
-        return false;
+        return open_file_failure;
     }
 }
 
@@ -26,17 +26,17 @@ bool JsonFileUtils::writeObject(QString path, QJsonObject obj) {
  * @param path -- the path to be written in
  * @param obj -- the QJsonArray to be written
  */
-bool JsonFileUtils::writeArray(QString path, QJsonArray arr) {
+error_t JsonFileUtils::writeArray(QString path, QJsonArray arr) {
     QFile file(path);
     if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         QTextStream in(&file);
         QJsonDocument doc(arr);
         in << doc.toJson();
         file.close();
-        return true;
+        return success;
     } else {
         qDebug() << "can't open the file!";
-        return false;
+        return open_file_failure;
     }
 }
 

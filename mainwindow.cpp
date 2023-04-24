@@ -3,6 +3,7 @@
 #include "canvaswidget.h"
 #include "user.h"
 #include "score.h"
+#include "soundeffectmanager.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,20 +11,39 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    play_background_music();
+
     ui->congrats->hide();
 
     userProfileName =  "user_test";
 
     // check birthday and set Congrats
     if(User::isBirthday(userProfileName)){
+        ui->congrats->setText("Happy Birthday," + userProfileName + "!");
         ui->congrats->show();
     }
 
 
-    //set Profile info: name, avatar, date
+    // set Profile Picture
+    QString avatarPath = User::getAvatarPath(userProfileName);
+//        QString avatarPath = "://images/basket.png";
 
+    QGraphicsScene *avatarScene = new QGraphicsScene();
+    QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
+    QPixmap p (avatarPath);
+//    qDebug()<< p.width() << p.height();
+    if(p.width() == p.height()){
+        item->setPixmap(p.scaled(ui->avatar_1->size()));
+    }
+    else{
+        item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
+    }
 
-    // TODO: set Profile Picture
+    avatarScene->addItem(item);
+
+    ui->avatar_1->setScene(avatarScene);
+    ui->avatar_2->setScene(avatarScene);
+    ui->avatar_3->setScene(avatarScene);
 
 
     // set User Name
@@ -44,6 +64,11 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::play_background_music() {
+    SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
+    soundEffectManager->playBackgroundMusic();
 }
 
 

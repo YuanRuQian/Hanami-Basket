@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDate>
+#include <QGraphicsPixmapItem>
 
 #include "canvaswidget.h"
 
@@ -19,6 +20,8 @@ public:
     ~MainWindow();
 
 private slots:
+    void play_background_music();
+
     void on_start_clicked();
 
     void on_scores_clicked();
