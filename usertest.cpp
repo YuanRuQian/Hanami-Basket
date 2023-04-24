@@ -24,18 +24,19 @@ void UserTest::testCheckPassword() {
 
 void UserTest::testAddUser() {
     User user1(username1, password1, "Gloria", "Wells", "Woman", "avatar1.jpg", QDate(1998, 12, 9));
-    assert(User::addUser(user1));
+    assert(User::addUser(user1) == success);
     User user2(username1, "Password1", "Gloria", "Wells", "Woman", "avatar1.jpg", QDate(1998, 12, 9));
-    assert(!User::addUser(user2)); // the username already exists
+    assert(User::addUser(user2) == duplicate_username); // the username already exists
     User user3("Gloria2", "password1", "Gloria", "Wells", "Woman", "avatar1.jpg", QDate(1998, 12, 9));
-    assert(!User::addUser(user3)); // invalid password
+    assert(User::addUser(user3) == invalid_password); // invalid password
     User user4(username2, password2, "Lauryn", "Hanson", "Woman", "avatar2.jpg", QDate::currentDate());
-    assert(User::addUser(user4));
+    assert(User::addUser(user4) == success);
 }
 
+
 void UserTest::testCheckUsername() {
-    assert(User::checkUsername(username1));
-    assert(User::checkUsername(username2));
+    assert(User::checkUsername("Gloria_test"));
+    assert(User::checkUsername("Lauryn_test"));
     assert(!User::checkUsername("Amy"));
 }
 
