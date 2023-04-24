@@ -37,6 +37,9 @@ private:
     void updateScoreLabel(int newScore);
     void updateLivesLabel(int newLives);
     void updateGameLevelLabel();
+
+signals:
+    void backToStart();
 };
 
 #endif // CANVASWIDGET_H
