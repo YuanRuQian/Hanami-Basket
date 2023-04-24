@@ -1,4 +1,4 @@
-
+#include "mainwindow.h"
 #include "canvaswidget.h"
 #include "scoretest.h"
 #include "usertest.h"
@@ -13,12 +13,15 @@ int main(int argc, char **argv) {
     ScoreTest().testAll();
 
     QApplication app (argc, argv);
-    GameStateMachine* gameStateMachine = GameStateMachine::instance();
-    gameStateMachine->setGameLevelWithText(QString("Medium"));
+//    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+//    gameStateMachine->setGameLevelWithText(QString("Medium"));
+//    gameStateMachine->setGameUsername(QString("jojo"));
 
-    CanvasWidget* mainWidget = new CanvasWidget(&app);
+//    CanvasWidget* mainWidget = new CanvasWidget();
 
-    mainWidget->show();
+//    mainWidget->show();
+    MainWindow *w = new MainWindow();
+    w->show();
 
     return app.exec();
 }

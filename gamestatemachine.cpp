@@ -22,6 +22,7 @@ GameStateMachine* GameStateMachine::instance()
 GameStateMachine::GameStateMachine(QObject *parent)
     : QObject(parent)
 {
+    username = QString("defaultusername");
     gameLevel = Easy;
     setUpGameLevelConfig();
     score = 0;
@@ -49,8 +50,7 @@ void GameStateMachine::handleMissDetection()
     if (livesCount == 0)
     {
         qDebug() << "Oops you died... Bye...\n\n";
-        // TODO: use actual username
-        Score::insertNewRecord(QString("null"), score);
+        Score::insertNewRecord(username, score);
         emit terminateTheGame();
     }
 }
@@ -58,6 +58,10 @@ void GameStateMachine::handleMissDetection()
 void GameStateMachine::setGameLevel(GameLevel newGameLevel) {
     gameLevel = newGameLevel;
     emit gameLevelUpdated();
+}
+
+void GameStateMachine::setGameUsername(QString newUsername) {
+    username = newUsername;
 }
 
 void GameStateMachine::setGameLevelWithText(QString gameLevelText) {
