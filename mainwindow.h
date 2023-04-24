@@ -36,7 +36,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QDate date;
-    QString name;
     CanvasWidget *game;
 
     QString userProfileName;
