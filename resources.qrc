@@ -5,5 +5,6 @@
         <file>images/cherryBlossom.gif</file>
         <file>sounds/fuiyoh.wav</file>
         <file>sounds/haiyaa.wav</file>
+        <file>sounds/anExcerptOnCherryBlossoms.wav</file>
     </qresource>
 </RCC>
