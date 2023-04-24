@@ -1,13 +1,23 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "canvaswidget.h"
+#include "user.h"
 
-MainWindow::MainWindow(QApplication* gameApp, QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->gameApp = gameApp;
+
+    ui->congrats->hide();
+
+    userProfileName =  "user_test";
+
+    // check birthday and set Congrats
+    if(User::isBirthday(userProfileName)){
+        ui->congrats->show();
+    }
+
 
     // TODO:set Profile info
 
@@ -67,7 +77,7 @@ void MainWindow::on_easy_clicked()
 
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
     gameStateMachine->setGameLevelWithText(QString("Easy"));
-    game = new CanvasWidget(gameApp);
+    game = new CanvasWidget();
     ui->stackedWidget->insertWidget(4,game);
     ui->stackedWidget->setCurrentIndex(4);
 }
@@ -77,7 +87,7 @@ void MainWindow::on_medium_clicked()
 {
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
     gameStateMachine->setGameLevelWithText(QString("Medium"));
-    game = new CanvasWidget(gameApp);
+    game = new CanvasWidget();
     ui->stackedWidget->insertWidget(4,game);
     ui->stackedWidget->setCurrentIndex(4);
 }
@@ -87,7 +97,7 @@ void MainWindow::on_hard_clicked()
 {
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
     gameStateMachine->setGameLevelWithText(QString("Hard"));
-    game = new CanvasWidget(gameApp);
+    game = new CanvasWidget();
     ui->stackedWidget->insertWidget(4,game);
     ui->stackedWidget->setCurrentIndex(4);
 }

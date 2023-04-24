@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QApplication* gameApp, QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -38,7 +38,8 @@ private:
     QDate date;
     QString name;
     CanvasWidget *game;
-    QApplication* gameApp;
+
+    QString userProfileName;
 
 };
 #endif // MAINWINDOW_H

@@ -9,17 +9,19 @@
 #include <QVBoxLayout>
 
 int main(int argc, char **argv) {
-    UserTest().testAll();
-    ScoreTest().testAll();
+//    UserTest().testAll();
+//    ScoreTest().testAll();
 
     QApplication app (argc, argv);
-    GameStateMachine* gameStateMachine = GameStateMachine::instance();
-    gameStateMachine->setGameLevelWithText(QString("Medium"));
-    gameStateMachine->setGameUsername(QString("jojo"));
+//    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+//    gameStateMachine->setGameLevelWithText(QString("Medium"));
+//    gameStateMachine->setGameUsername(QString("jojo"));
 
-    CanvasWidget* mainWidget = new CanvasWidget();
+//    CanvasWidget* mainWidget = new CanvasWidget();
 
-    mainWidget->show();
+//    mainWidget->show();
+    MainWindow *w = new MainWindow();
+    w->show();
 
     return app.exec();
 }
