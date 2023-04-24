@@ -1,6 +1,7 @@
-QT+=widgets
+QT+=widgets \
+    multimedia
 
-QT+=multimedia
+ICON = icon.icns
 
 
 SOURCES += \
