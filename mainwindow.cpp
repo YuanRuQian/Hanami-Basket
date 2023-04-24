@@ -119,17 +119,21 @@ void MainWindow::on_easy_clicked()
     game = new CanvasWidget();
     ui->stackedWidget->insertWidget(4,game);
     ui->stackedWidget->setCurrentIndex(4);
+
+    connect(game, &CanvasWidget::backToStart, this, &MainWindow::on_back1_clicked);
 }
 
 
 void MainWindow::on_medium_clicked()
-{
+{   
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
     gameStateMachine->setGameLevelWithText(QString("Medium"));
     gameStateMachine->setGameUsername(userProfileName);
     game = new CanvasWidget();
     ui->stackedWidget->insertWidget(4,game);
     ui->stackedWidget->setCurrentIndex(4);
+
+    connect(game, &CanvasWidget::backToStart, this, &MainWindow::on_back1_clicked);
 }
 
 
@@ -141,5 +145,6 @@ void MainWindow::on_hard_clicked()
     game = new CanvasWidget();
     ui->stackedWidget->insertWidget(4,game);
     ui->stackedWidget->setCurrentIndex(4);
-}
 
+    connect(game, &CanvasWidget::backToStart, this, &MainWindow::on_back1_clicked);
+}

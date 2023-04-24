@@ -119,7 +119,17 @@ void CanvasWidget::terminateTheGame() {
     disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
     disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
 
-    QMessageBox::information(nullptr, "Game Over", "Oops...You died...");
+    // pop out the message box and back to the start screen if button clicked
+    QMessageBox *msgBox = new QMessageBox();
+    msgBox->setWindowTitle("Game Over");
+    msgBox->setInformativeText("Your score is " + scoreCountLabel->text());
+    msgBox->setText("Oops...You died...");
+
+    int result = msgBox->exec();
+
+    if(result){
+        emit backToStart();
+    }
 
     SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
 
