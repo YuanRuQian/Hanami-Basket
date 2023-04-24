@@ -35,6 +35,14 @@ private slots:
 
     void on_hard_clicked();
 
+    void on_loginButton_clicked();
+
+    void on_signupButton_clicked();
+
+    void on_guestButton_clicked();
+
+    void on_signupButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
     QDate date;

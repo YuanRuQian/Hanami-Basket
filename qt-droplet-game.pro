@@ -26,6 +26,7 @@ SOURCES += \
     mainwindow.cpp
 
 RESOURCES += \
+    resources.qrc \
     resources.qrc
 
 

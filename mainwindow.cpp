@@ -30,9 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     // set User Name
-    ui->userName_1->setText(userProfileName);
-    ui->userName_2->setText(userProfileName);
-    ui->userName_3->setText(userProfileName);
+//    ui->userName_1->setText(userProfileName);
+//    ui->userName_2->setText(userProfileName);
+//    ui->userName_3->setText(userProfileName);
 
     // set Current Date
     date = QDate::currentDate();
@@ -57,7 +57,7 @@ void MainWindow::play_background_music() {
 
 void MainWindow::on_start_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(3);
 
 }
 
@@ -126,3 +126,116 @@ void MainWindow::on_hard_clicked()
     ui->stackedWidget->setCurrentIndex(4);
 }
 
+
+void MainWindow::on_loginButton_clicked()
+{
+    std::string errorMsg = "";
+    QString username = ui->usernameText->toPlainText();
+
+    if (username != "") {
+        // CHECK IF USERNAME EXISTS
+        if (! User::checkUsername(username)) {
+            errorMsg = "User does not exist!";
+        }
+        else {
+            // CHECK IF USERNAME MATCHES PASSWORD
+            QString password = ui->passwordText->toPlainText();
+
+            if (User::checkUser(username, password)) {
+                // LOGIN SUCCESS
+                userProfileName = username;
+
+                ui->userName_1->setText(userProfileName);
+                ui->userName_2->setText(userProfileName);
+                ui->userName_3->setText(userProfileName);
+
+                // go to game page
+                ui->stackedWidget->setCurrentIndex(2);
+            }
+            else {
+                errorMsg = "Invalid password!";
+            }
+        }
+    }
+    else {
+        errorMsg = "User name cannot be blank!";
+    }
+
+    ui->errorMessage->setText(QString::fromStdString(errorMsg));
+}
+
+
+void MainWindow::on_signupButton_clicked()
+{
+    // go to sign up page
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_guestButton_clicked()
+{
+    userProfileName = "Guest";
+
+    ui->userName_1->setText(userProfileName);
+    ui->userName_2->setText(userProfileName);
+    ui->userName_3->setText(userProfileName);
+
+    // go to game page
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+
+void MainWindow::on_signupButton_3_clicked()
+{
+    std::string errorMsg = "";
+    QString username = ui->usernameText_3->toPlainText();
+
+    if (User::checkUsername(username)) {
+        errorMsg = "User name already exists!";
+    }
+    else {
+        QString password = ui->passwordText_3->toPlainText();
+
+        if (! User::checkPassword(password)) {
+            errorMsg = "Your password should include at least 8 characters and at least one "
+                       "number, one upper and one lower case letter.";
+        }
+        else {
+            std::string gender = "";
+
+            if (ui->femaleButton->isChecked()) {
+                gender = "female";
+            }
+            if (ui->maleButton->isChecked()) {
+                gender = "male";
+            }
+            if (ui->femaleButton->isChecked()) {
+                gender = "nonbinary";
+            }
+
+            // User(QString uname, QString pwd, QString firstN, QString lastN, QString gender, QString avatar, QDate bDay);
+            User currentUser(username, password,
+                             ui->firstnameText->toPlainText(),
+                             ui->lastnameText->toPlainText(),
+                             QString::fromStdString(gender),
+                             QString::fromStdString(""),
+                             ui->birthdayEdit->date());
+
+            if (User::addUser(currentUser)) {
+                // sign up success, go to game page
+                ui->stackedWidget->setCurrentIndex(2);
+
+                userProfileName = username;
+
+                ui->userName_1->setText(userProfileName);
+                ui->userName_2->setText(userProfileName);
+                ui->userName_3->setText(userProfileName);
+            }
+            else {
+                errorMsg = "Oops, there's something wrong while we trying to store your profile..";
+            }
+        }
+    }
+
+    ui->errorMessage_2->setText(QString::fromStdString(errorMsg));
+}

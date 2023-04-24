@@ -52,6 +52,8 @@ void BackgroundScene::addCherryBlossom()
 
     if (numBlossoms < NUM_CHERRY_BLOSSOMS) {
         CherryBlossom* cherryBlossom = new CherryBlossom();
+        // TODO: MODIFIED TO RUN ON LINUX, NEED TO CHANGE BACK
+//        int randomX = rand() % static_cast<int>(BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE);
         int randomX = arc4random_uniform(BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE);
         cherryBlossom->setPos(randomX, 0);
         this->addItem(cherryBlossom);
