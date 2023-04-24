@@ -133,6 +133,11 @@ void MainWindow::on_loginButton_clicked()
                 // LOGIN SUCCESS
                 userProfileName = username;
 
+                // set Birthday Greeting
+                if(User::isBirthday(userProfileName)){
+                    ui->congrats->show();
+                }
+
                 // set Profile User Name
 
                 ui->userName_1->setText(userProfileName);
@@ -140,7 +145,6 @@ void MainWindow::on_loginButton_clicked()
                 ui->userName_3->setText(userProfileName);
 
                 // set Profile User Avatar
-
                 QString avatarPath = User::getAvatarPath(userProfileName, false);
 
                 QGraphicsScene *avatarScene = new QGraphicsScene();
@@ -191,7 +195,6 @@ void MainWindow::on_guestButton_clicked()
     ui->userName_3->setText(userProfileName);
 
     // set Profile Guest Avatar
-
     QString avatarPath = User::getAvatarPath(userProfileName, true);
 
     QGraphicsScene *avatarScene = new QGraphicsScene();
