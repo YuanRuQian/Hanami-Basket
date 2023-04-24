@@ -17,41 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 //    userProfileName =  "user_test";
 
-    // check birthday and set Congrats
-    if(User::isBirthday(userProfileName)){
-        ui->congrats->setText("Happy Birthday," + userProfileName + "!");
-        ui->congrats->show();
-    }
-
-
-    // set Profile Picture
-    QString avatarPath = User::getAvatarPath(userProfileName);
-//        QString avatarPath = "://images/basket.png";
-
-    QGraphicsScene *avatarScene = new QGraphicsScene();
-    QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
-    QPixmap p (avatarPath);
-//    qDebug()<< p.width() << p.height();
-    if(p.width() == p.height()){
-        item->setPixmap(p.scaled(ui->avatar_1->size()));
-    }
-    else{
-        item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
-    }
-
-    avatarScene->addItem(item);
-
-    ui->avatar_1->setScene(avatarScene);
-    ui->avatar_2->setScene(avatarScene);
-    ui->avatar_3->setScene(avatarScene);
-
-    // set Current Date
+    // set Profile Current Date
     date = QDate::currentDate();
     QString dateString = date.toString("yyyy-MM-dd");
     ui->currentDate_1->setText(dateString);
     ui->currentDate_2->setText(dateString);
     ui->currentDate_3->setText(dateString);
-
 }
 
 
@@ -162,9 +133,30 @@ void MainWindow::on_loginButton_clicked()
                 // LOGIN SUCCESS
                 userProfileName = username;
 
+                // set Profile User Name
+
                 ui->userName_1->setText(userProfileName);
                 ui->userName_2->setText(userProfileName);
                 ui->userName_3->setText(userProfileName);
+
+                // set Profile User Avatar
+                QString avatarPath = User::getAvatarPath(userProfileName);
+
+                QGraphicsScene *avatarScene = new QGraphicsScene();
+                QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
+                QPixmap p (avatarPath);
+                //    qDebug()<< p.width() << p.height();
+                if(p.width() == p.height()){
+                    item->setPixmap(p.scaled(ui->avatar_1->size()));
+                }
+                else{
+                    item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
+                }
+
+                avatarScene->addItem(item);
+                ui->avatar_1->setScene(avatarScene);
+                ui->avatar_2->setScene(avatarScene);
+                ui->avatar_3->setScene(avatarScene);
 
                 // go to game page
                 ui->stackedWidget->setCurrentIndex(2);
@@ -196,6 +188,25 @@ void MainWindow::on_guestButton_clicked()
     ui->userName_1->setText(userProfileName);
     ui->userName_2->setText(userProfileName);
     ui->userName_3->setText(userProfileName);
+
+    // set Profile Guest Avatar
+    QString avatarPath = User::getAvatarPath(userProfileName);
+
+    QGraphicsScene *avatarScene = new QGraphicsScene();
+    QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
+    QPixmap p (avatarPath);
+    //    qDebug()<< p.width() << p.height();
+    if(p.width() == p.height()){
+        item->setPixmap(p.scaled(ui->avatar_1->size()));
+    }
+    else{
+        item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
+    }
+
+    avatarScene->addItem(item);
+    ui->avatar_1->setScene(avatarScene);
+    ui->avatar_2->setScene(avatarScene);
+    ui->avatar_3->setScene(avatarScene);
 
     // go to game page
     ui->stackedWidget->setCurrentIndex(2);

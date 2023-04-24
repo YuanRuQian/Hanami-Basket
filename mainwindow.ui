@@ -263,7 +263,7 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#usernameText{background-color:white}</string>
+          <string notr="true">#usernameText{background-color:white;color:black}</string>
          </property>
         </widget>
        </item>
@@ -393,7 +393,7 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#passwordText{background-color:white}</string>
+          <string notr="true">#passwordText{background-color:white;color:black}</string>
          </property>
         </widget>
        </item>
@@ -540,7 +540,7 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#passwordText_3{background-color:white}</string>
+          <string notr="true">#passwordText_3{background-color:white;color:balck}</string>
          </property>
         </widget>
        </item>
@@ -594,7 +594,7 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#usernameText_3{background-color:white}</string>
+          <string notr="true">#usernameText_3{background-color:white;color:balck}</string>
          </property>
          <property name="backgroundVisible">
           <bool>false</bool>
@@ -650,7 +650,7 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#firstnameText{background-color:white}</string>
+          <string notr="true">#firstnameText{background-color:white;color:balck}</string>
          </property>
         </widget>
        </item>
@@ -703,7 +703,7 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#lastnameText{background-color:white}</string>
+          <string notr="true">#lastnameText{background-color:white;color:balck}</string>
          </property>
         </widget>
        </item>
@@ -1522,7 +1522,7 @@ padding: 2px;
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
