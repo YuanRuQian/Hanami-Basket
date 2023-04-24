@@ -2,6 +2,7 @@
 #define GAMESTATEMACHINE_H
 
 #include <QObject>
+#include <QString>
 
 enum GameLevel {
     Easy,
@@ -50,6 +51,8 @@ public slots:
     void handleBasketCollision();
     void handleMissDetection();
     void setGameLevelWithText(QString gameLevelText);
+    void setGameUsername(QString username);
+
 
 private:
     int score;
@@ -59,6 +62,7 @@ private:
     void setUpGameLevelConfig();
     GameLevelConfig getDefaultGameLevelConfig();
     void setGameLevel(GameLevel gameLevel);
+    QString username;
 };
 
 #endif // GAMESTATEMACHINE_H
