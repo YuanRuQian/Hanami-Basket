@@ -26,11 +26,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     // set Profile Picture
     QString avatarPath = User::getAvatarPath(userProfileName);
+//        QString avatarPath = "://images/basket.png";
 
     QGraphicsScene *avatarScene = new QGraphicsScene();
     QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
     QPixmap p (avatarPath);
-    qDebug()<< p.width() << p.height();
+//    qDebug()<< p.width() << p.height();
     if(p.width() == p.height()){
         item->setPixmap(p.scaled(ui->avatar_1->size()));
     }
