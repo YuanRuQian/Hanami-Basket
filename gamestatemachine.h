@@ -10,8 +10,8 @@ enum GameLevel {
 };
 
 struct GameLevelConfig {
-    int BASKET_MOVE_STEP;
-    int CHERRYBLOSSOM_FALLING_SPEED;
+    float BASKET_MOVE_STEP;
+    float CHERRYBLOSSOM_FALLING_SPEED;
 };
 
 
@@ -21,8 +21,10 @@ class GameStateMachine : public QObject
 
 public:
     static GameStateMachine* instance();
-    GameLevelConfig getCurrentGameLevelConfig();
+
     QString getCurrentGameLevelLabelText();
+    float getCurrentCherryBlossomFallingSpeed();
+    float getCurrentBasketMoveStep();
 
 private:
     // Private constructor and destructor to prevent direct instantiation and deletion
@@ -32,7 +34,7 @@ private:
     // Singleton instance
     static GameStateMachine* m_instance;
 
-    std::map<GameLevel, GameLevelConfig> GAME_LEVEL_CONFIG;
+    std::map<GameLevel, GameLevelConfig> GAME_DEFAULT_LEVEL_CONFIG;
 
 
 signals:
@@ -47,7 +49,7 @@ signals:
 public slots:
     void handleBasketCollision();
     void handleMissDetection();
-    void setGameLevel(GameLevel gameLevel);
+    void setGameLevelWithText(QString gameLevelText);
 
 private:
     int score;
@@ -55,6 +57,8 @@ private:
     GameLevel gameLevel;
     void updateGameLevel();
     void setUpGameLevelConfig();
+    GameLevelConfig getDefaultGameLevelConfig();
+    void setGameLevel(GameLevel gameLevel);
 };
 
 #endif // GAMESTATEMACHINE_H
