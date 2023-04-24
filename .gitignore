@@ -2,9 +2,12 @@
 # data storage
 data/users/*
 !data/users/user_test.json
+<<<<<<< HEAD
 data/scores/*
 !data/scores/user_test.json
 !data/scores/global_best_score
+=======
+>>>>>>> a77c2638355e215f30a9f1042f4fa264a03a5e95
 # C++ objects and libs
 *.slo
 *.lo
