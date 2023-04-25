@@ -3,8 +3,8 @@
         <file>images/background.png</file>
         <file>images/basket.png</file>
         <file>images/cherryBlossom.gif</file>
-        <file>sounds/fuiyoh.wav</file>
-        <file>sounds/haiyaa.wav</file>
         <file>sounds/anExcerptOnCherryBlossoms.wav</file>
+        <file>sounds/ding.wav</file>
+        <file>sounds/sadWhistle.wav</file>
     </qresource>
 </RCC>
