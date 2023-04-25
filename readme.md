@@ -16,7 +16,7 @@
 
 ## Signup Page
 
-
+![](screenshots/signup.png)
 
 ### Signup Confirmation
 
@@ -27,6 +27,11 @@
 ![](screenshots/after_login_or_signup.png)
 
 - If today happens to be the player's birthday, they will receive a special birthday greeting.
+
+## Play as Guest
+> Your score will not be recorded in guest mode
+
+
 
 ## Score Page
 
