@@ -27,9 +27,10 @@ Score::Score(QString username, QDateTime time, int score) {
  * @param username -- the specified username
  * @return the user's score history in a QVector<Score>.
  */
-QVector<Score> Score::getScoreHistory(QString username) {
-    QJsonArray arr = Score::getScoreData(username);
+QVector<Score> Score::getScoreHistory(QString username, bool isGuest) {
     QVector<Score> scores;
+    if (isGuest) return scores;
+    QJsonArray arr = Score::getScoreData(username);
     for (int i = 0; i < arr.size(); i++) {
         QJsonObject obj = arr.at(i).toObject();
         scores.append(jsonObjectToScore(obj));
