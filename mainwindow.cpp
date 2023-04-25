@@ -334,6 +334,7 @@ void MainWindow::on_profilePictureUploader_released()
 void MainWindow::on_backToLogin_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    clearSignup();
 }
 
 
@@ -345,14 +346,14 @@ void MainWindow::on_logout_clicked()
 void MainWindow::clearLogin(){
     ui->usernameText->clear();
     ui->loginPasswordLineEdit->clear();
+    ui->errorMessage->clear();
 }
 
 void MainWindow:: clearSignup(){
-
     ui->usernameText_3->clear();
     ui->signUpPasswordLineEdit->clear();
     ui->firstnameText->clear();
     ui->lastnameText->clear();
-
+    ui->errorMessage_2->clear();
 }
 
