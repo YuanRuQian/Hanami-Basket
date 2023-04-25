@@ -14,6 +14,12 @@
 
 ![](screenshots/login.png)
 
+## After Login or Signup Page
+
+![](screenshots/after_login_or_signup.png)
+
+- If today happens to be the player's birthday, they will receive a special birthday greeting.
+
 ## The Game
 
 ![](screenshots/game_scene.png)
