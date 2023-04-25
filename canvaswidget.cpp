@@ -2,6 +2,7 @@
 #include "canvaswidget.h"
 #include "constants.h"
 #include "gamestatemachine.h"
+#include "score.h"
 #include "soundeffectmanager.h"
 #include <QGraphicsView>
 #include <QVBoxLayout>
@@ -113,13 +114,7 @@ void CanvasWidget::updateGameLevelLabel() {
     gameLevelValueLabel->setText(gameStateMachine->getCurrentGameLevelLabelText());
 }
 
-void CanvasWidget::terminateTheGame() {
-    GameStateMachine* gameStateMachine = GameStateMachine::instance();
-
-    disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
-    disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
-
-    // pop out the message box and back to the start screen if button clicked
+void CanvasWidget::loseTheGame() {
     QMessageBox *msgBox = new QMessageBox();
     msgBox->setWindowTitle("Game Over");
     msgBox->setIconPixmap(QPixmap("../../../../Hanami-Basket/icon.icns"));
@@ -131,10 +126,47 @@ void CanvasWidget::terminateTheGame() {
     if(result){
         emit backToStart();
     }
+}
+
+void CanvasWidget::winTheGame() {
+    QMessageBox *msgBox = new QMessageBox();
+    msgBox->setWindowTitle("Congratulations");
+    msgBox->setIconPixmap(QPixmap("../../../../Hanami-Basket/icon.icns"));
+    msgBox->setInformativeText("Your score is " + scoreCountLabel->text());
+    msgBox->setText("You win the game!");
+
+    int result = msgBox->exec();
+
+    if(result){
+        emit backToStart();
+    }
+}
+
+
+void CanvasWidget::terminateTheGame(TerminationState terminationState) {
+    GameStateMachine* gameStateMachine = GameStateMachine::instance();
+
+    gameStateMachine->insertNewScoreRecord();
+
+    disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, this, &CanvasWidget::updateScoreLabel);
+    disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, this, &CanvasWidget::updateLivesLabel);
 
     SoundEffectManager* soundEffectManager = SoundEffectManager::instance();
 
     disconnect(gameStateMachine, &GameStateMachine::scoreUpdated, soundEffectManager, &SoundEffectManager::playCollisionSound);
     disconnect(gameStateMachine, &GameStateMachine::livesCountUpdated, soundEffectManager, &SoundEffectManager::playMissSound);
+
+    switch (terminationState) {
+    case Lose:
+        loseTheGame();
+        break;
+    case Win:
+        winTheGame();
+        break;
+    default:
+        break;
+    }
+
+    gameStateMachine->resetScoreAndLivesState();
 }
 

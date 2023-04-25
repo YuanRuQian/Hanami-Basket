@@ -10,6 +10,11 @@ enum GameLevel {
     Hard
 };
 
+enum TerminationState {
+    Win,
+    Lose
+};
+
 struct GameLevelConfig {
     float BASKET_MOVE_STEP;
     float CHERRYBLOSSOM_FALLING_SPEED;
@@ -26,6 +31,8 @@ public:
     QString getCurrentGameLevelLabelText();
     float getCurrentCherryBlossomFallingSpeed();
     float getCurrentBasketMoveStep();
+    void insertNewScoreRecord();
+    void resetScoreAndLivesState();
 
 private:
     // Private constructor and destructor to prevent direct instantiation and deletion
@@ -43,7 +50,7 @@ signals:
     void restartGame();
     void scoreUpdated(int score);
     void livesCountUpdated(int livesCount);
-    void terminateTheGame();
+    void terminateTheGame(TerminationState terminationState);
     void gameLevelUpdated();
 
 

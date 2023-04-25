@@ -36,10 +36,19 @@ void GameStateMachine::handleBasketCollision()
 
     qDebug() << "\n\nTriggered: GameStateMachine::handleBasketCollision()";
     qDebug() << "Score updated: New score =" << score << "\n\n";
+
+    if(score == WIN_SCORE_THRESHOLD) {
+        emit terminateTheGame(Win);
+    }
 }
 
 void GameStateMachine::handleMissDetection()
 {
+    // if the player wins but also run out of lives, still judge them as a winner
+    if(score >= WIN_SCORE_THRESHOLD) {
+        return;
+    }
+
     if(livesCount==0) {
         return;
     }
@@ -54,8 +63,7 @@ void GameStateMachine::handleMissDetection()
     if (livesCount == 0)
     {
         qDebug() << "Oops you died... Bye...\n\n";
-        Score::insertNewRecord(username, score);
-        emit terminateTheGame();
+        emit terminateTheGame(Lose);
     }
 }
 
@@ -133,6 +141,15 @@ float GameStateMachine::getCurrentCherryBlossomFallingSpeed() {
 float GameStateMachine::getCurrentBasketMoveStep() {
     GameLevelConfig gameLevelDefaultConfig = getDefaultGameLevelConfig();
     return gameLevelDefaultConfig.BASKET_MOVE_STEP;
+}
+
+void GameStateMachine::insertNewScoreRecord() {
+    Score::insertNewRecord(username, score);
+}
+
+void GameStateMachine::resetScoreAndLivesState() {
+    score = 0;
+    livesCount = DEFAULT_LIVES;
 }
 
 GameStateMachine::~GameStateMachine()
