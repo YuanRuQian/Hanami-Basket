@@ -174,14 +174,7 @@ void MainWindow::on_guestButton_clicked()
     QGraphicsScene *avatarScene = new QGraphicsScene();
     QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
     QPixmap p (avatarPath);
-    //    qDebug()<< p.width() << p.height();
-    if(p.width() == p.height()){
-        item->setPixmap(p.scaled(ui->avatar_1->size()));
-    }
-    else{
-        item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
-    }
-
+    item->setPixmap(p.scaled(QSize(70, 70), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     avatarScene->addItem(item);
     ui->avatar_1->setScene(avatarScene);
     ui->avatar_2->setScene(avatarScene);
@@ -262,14 +255,7 @@ void MainWindow::setNonGuestUserAvatar() {
     QGraphicsScene *avatarScene = new QGraphicsScene();
     QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
     QPixmap p (avatarPath);
-    //    qDebug()<< p.width() << p.height();
-    if(p.width() == p.height()){
-        item->setPixmap(p.scaled(ui->avatar_1->size()));
-    }
-    else{
-        item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
-    }
-
+    item->setPixmap(p.scaled(QSize(70, 70), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     avatarScene->addItem(item);
     ui->avatar_1->setScene(avatarScene);
     ui->avatar_2->setScene(avatarScene);
