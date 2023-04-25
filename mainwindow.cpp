@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     // set Profile Current Date
     date = QDate::currentDate();
     QString dateString = date.toString("yyyy-MM-dd");
+    ui->calendarWidget->setMaximumDate(date);
     ui->currentDate_1->setText(dateString);
     ui->currentDate_2->setText(dateString);
     ui->currentDate_3->setText(dateString);
@@ -253,7 +254,7 @@ void MainWindow::on_signupButton_3_clicked()
                              ui->lastnameText->toPlainText(),
                              QString::fromStdString(gender),
                              QString::fromStdString(""),
-                             ui->birthdayEdit->date());
+                             userBirthday);
 
             if (User::addUser(currentUser)) {
                 // sign up success, go to game page
@@ -271,5 +272,15 @@ void MainWindow::on_signupButton_3_clicked()
         }
     }
 
+    if(userBirthday.isNull()) {
+        errorMsg = "Please enter your birthday.";
+    }
+
     ui->errorMessage_2->setText(QString::fromStdString(errorMsg));
 }
+
+void MainWindow::on_calendarWidget_selectionChanged()
+{
+    userBirthday = ui->calendarWidget->selectedDate();
+}
+
