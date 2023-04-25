@@ -63,7 +63,7 @@ void MainWindow::on_scores_clicked()
         score_line += QString::number(scoreHistory[i].score);
     }
 
-    ui->scoreHistory->setText(scoreText);
+    ui->scoreHistory->setText(score_line);
 }
 
 
