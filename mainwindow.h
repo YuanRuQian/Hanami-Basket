@@ -54,6 +54,8 @@ private slots:
 
     void setNonGuestUserAvatar();
 
+    void updateProfilePicturePreview(QString fileName);
+
 private:
     Ui::MainWindow *ui;
     QDate date;
