@@ -33,10 +33,12 @@ public:
 
 
 private:
-    void terminateTheGame();
+    void terminateTheGame(TerminationState terminationState);
     void updateScoreLabel(int newScore);
     void updateLivesLabel(int newLives);
     void updateGameLevelLabel();
+    void loseTheGame();
+    void winTheGame();
 
 signals:
     void backToStart();
