@@ -48,6 +48,12 @@ private slots:
 
     void on_calendarWidget_selectionChanged();
 
+    void on_profilePictureUploader_released();
+
+    QString getProfilePicturePath();
+
+    void setNonGuestUserAvatar();
+
 private:
     Ui::MainWindow *ui;
     QDate date;
