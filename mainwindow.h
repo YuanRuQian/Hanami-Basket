@@ -56,6 +56,8 @@ private slots:
 
     void updateProfilePicturePreview(QString fileName);
 
+    void setBirthdayGreeting();
+
 private:
     Ui::MainWindow *ui;
     QDate date;
