@@ -31,11 +31,12 @@
 ## Play as Guest
 > Your score will not be recorded in guest mode
 
+Choose `Play as Guest` at login page.
 
 
 ## Score Page
 
-// TODO
+![](screenshots/score_page.png)
 
 ## Game Instructions & Game Level Page
 
