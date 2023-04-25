@@ -277,6 +277,21 @@ void MainWindow::on_calendarWidget_selectionChanged()
     userBirthday = ui->calendarWidget->selectedDate();
 }
 
+void MainWindow::updateProfilePicturePreview(QString fileName) {
+    // Load the image using QPixmap
+    QPixmap pixmap(fileName);
+
+    if (!pixmap.isNull()) {
+        // Scale the pixmap to a fixed size
+        QPixmap scaledPixmap = pixmap.scaled(QSize(60, 60), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        // Set the scaled pixmap as the pixmap for the previewLabel
+        ui->imagePreviewLabel->setPixmap(scaledPixmap);
+    } else {
+        // Clear the previewLabel if no image was loaded
+        ui->imagePreviewLabel->clear();
+    }
+}
+
 QString MainWindow::getProfilePicturePath() {
     QFileDialog dialog(this);
 
@@ -286,8 +301,9 @@ QString MainWindow::getProfilePicturePath() {
 
     if (dialog.exec())
     {
-        qDebug() << "dialog.selectedFiles().first(): " << dialog.selectedFiles().first();
-        return dialog.selectedFiles().first();
+        QString selectedFile = dialog.selectedFiles().first();
+        updateProfilePicturePreview(selectedFile);
+        return selectedFile;
     }
     else
     {
