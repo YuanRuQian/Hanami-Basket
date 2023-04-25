@@ -19,7 +19,7 @@ public:
     static QString USER_PATH;
     static QString AVATAR_PATH;
     static QString SCORE_PATH;
-    static QString GUEST_AVATAR_PATH;
+    static QString DEFAULT_AVATAR_PATH;
     QString username;
     QString password;
     QString firstName;
