@@ -24,9 +24,10 @@
 
 ## After Login or Signup Page
 
+> If today happens to be the player's birthday, they will receive a special birthday greeting.
+
 ![](screenshots/after_login_or_signup.png)
 
-- If today happens to be the player's birthday, they will receive a special birthday greeting.
 
 ## Play as Guest
 > Your score will not be recorded in guest mode
@@ -40,15 +41,19 @@ Choose `Play as Guest` at login page.
 
 ## Game Instructions & Game Level Page
 
-// TODO
+![](screenshots/instructions.png)
 
 ## The Game
 
+> Use the left (⬅️) and right (➡️) arrow keys to move the basket and catch falling cherry blossoms
+
+
 ![](screenshots/game_scene.png)
 
-- Use the left (⬅️) and right (➡️) arrow keys to move the basket and catch falling cherry blossoms
 
 ## When the Player Loses the Game
+
+Click on `OK` to return to the page after logging in or signing up.
 
 ![](screenshots/lose.png)
 
@@ -56,4 +61,7 @@ Choose `Play as Guest` at login page.
 
 > The score of 50 shown in the screenshot is solely for testing purposes, as the actual winning threshold is set at 150 (which, dare I say, is quite challenging even for the easy level).
 
+Click on `OK` to return to the page after logging in or signing up.
+
 ![](screenshots/win.png)
+
