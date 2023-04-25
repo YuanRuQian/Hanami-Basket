@@ -17,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->congrats->hide();
 
-    //    userProfileName =  "user_test";
-
     // set Profile Current Date
     date = QDate::currentDate();
     QString dateString = date.toString("yyyy-MM-dd");
@@ -58,7 +56,7 @@ void MainWindow::on_scores_clicked()
     scoreText += "\nYour Score History:";
 
     for(int i = 0; i<scoreHistory.size(); i++){
-        scoreText += "\n" + scoreHistory[i].time.toString(Score::TIME_FORMAT) + ": ";
+        scoreText += "\n" + scoreHistory[i].time.toString(Score::TIME_FORMAT) + "     ";
         scoreText += QString::number(scoreHistory[i].score);
     }
 
