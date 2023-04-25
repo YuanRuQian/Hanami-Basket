@@ -126,8 +126,7 @@ void MainWindow::on_loginButton_clicked()
 
                 // set Birthday Greeting
                 if(User::isBirthday(userProfileName)){
-                    ui->congrats->setText("Happy Birthday, " + userProfileName + "!");
-                    ui->congrats->show();
+                    setBirthdayGreeting();
                 }
 
                 // set Profile User Name
@@ -236,6 +235,11 @@ void MainWindow::on_signupButton_3_clicked()
 
                 userProfileName = username;
 
+                // set Birthday Greeting
+                if(User::isBirthday(userProfileName)){
+                    setBirthdayGreeting();
+                }
+
                 ui->userName_1->setText(userProfileName);
                 ui->userName_2->setText(userProfileName);
                 ui->userName_3->setText(userProfileName);
@@ -314,6 +318,11 @@ QString MainWindow::getProfilePicturePath() {
     {
         return QString();
     }
+}
+
+void MainWindow::setBirthdayGreeting() {
+    ui->congrats->setText("Happy Birthday, " + userProfileName + "!");
+    ui->congrats->show();
 }
 
 
