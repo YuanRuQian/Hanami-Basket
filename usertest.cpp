@@ -23,14 +23,10 @@ void UserTest::testCheckPassword() {
 }
 
 void UserTest::testAddUser() {
-    User user1(username1, password1, "Gloria", "Wells", "Woman", User::AVATAR_PATH + "avatar1.jpg", QDate(1998, 12, 9));
-    assert(User::addUser(user1) == success);
-    User user2(username1, "Password1", "Gloria", "Wells", "Woman", User::AVATAR_PATH + "avatar1.jpg", QDate(1998, 12, 9));
-    assert(User::addUser(user2) == duplicate_username); // the username already exists
-    User user3("Gloria2", "password1", "Gloria", "Wells", "Woman", User::AVATAR_PATH + "avatar1.jpg", QDate(1998, 12, 9));
-    assert(User::addUser(user3) == invalid_password); // invalid password
-    User user4(username2, password2, "Lauryn", "Hanson", "Woman", User::AVATAR_PATH + "avatar2.jpg", QDate::currentDate());
-    assert(User::addUser(user4) == success);
+    assert(User::addUser(username1, password1, "Gloria", "Wells", "Woman", User::AVATAR_PATH + "avatar.jpeg", QDate(1998, 12, 9)) == success);
+    assert(User::addUser(username1, "Password1", "Gloria", "Wells", "Woman", User::AVATAR_PATH + "avatar.jpeg", QDate(1998, 12, 9)) == duplicate_username); // the username already exists
+    assert(User::addUser("Gloria2", "password1", "Gloria", "Wells", "Woman", User::AVATAR_PATH + "avatar.jpeg", QDate(1998, 12, 9)) == invalid_password); // invalid password
+    assert(User::addUser(username2, password2, "Lauryn", "Hanson", "Woman", User::AVATAR_PATH + "avatar.jpeg", QDate::currentDate()) == success);
 }
 
 
@@ -71,7 +67,6 @@ void UserTest::testCreateAvatarPath() {
     QString filePath3 = "/path/to/avatar";
     QString expected3 = "alice";
     QString result3 = User::createAvatarFileName(username3, filePath3);
-    qDebug() << result3;
     assert(result3 == expected3);
 
     // Test case 4: File path with multiple periods
@@ -97,6 +92,8 @@ void UserTest::testAll() {
     UserTest::testIsBirthday();
     UserTest::testCreateAvatarPath();
     qDebug() << "User test passed!";
+    JsonFileUtils::removeFile(User::getAvatarPath(username1, false));
+    JsonFileUtils::removeFile(User::getAvatarPath(username2, false));
     JsonFileUtils::removeFile(User::getUserFilePath(username1));
     JsonFileUtils::removeFile(User::getUserFilePath(username2));
 }
