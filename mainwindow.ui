@@ -525,7 +525,7 @@ padding: 2px;
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#323232;&quot;&gt;All fields required unless marked as optional.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#323232;&quot;&gt;All fields are required unless marked as optional.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_8">
@@ -901,7 +901,7 @@ padding: 2px;
         <x>510</x>
         <y>380</y>
         <width>293</width>
-        <height>95</height>
+        <height>154</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
@@ -931,10 +931,16 @@ padding: 2px;
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="usernameLabel_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>150</width>
-           <height>16777215</height>
+           <width>180</width>
+           <height>60</height>
           </size>
          </property>
          <property name="font">
@@ -954,12 +960,24 @@ padding: 2px;
 }</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Profile Picture (optional)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;* Only support .png and .jpg&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;font-family: Helvetica; font-size:11pt;&quot;&gt;Profile Picture (optional)&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Helvetica; font-size:10pt;&quot;&gt;png / jp(e)g / bmp / gif&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="imagePreviewLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
          <property name="text">
           <string>No Profile</string>
          </property>
@@ -1615,7 +1633,7 @@ padding: 2px;
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
