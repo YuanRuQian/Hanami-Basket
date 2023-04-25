@@ -1178,7 +1178,7 @@ padding: 2px;
          </property>
          <property name="styleSheet">
           <string notr="true">#currentDate_1{
-background-color:rgba(214, 214, 214, 128);
+background-color:rgba(255, 255, 255, 128);
 color: rgb(0, 0, 0);
 font: bold 12px;
 padding: 2px;
@@ -1451,7 +1451,7 @@ padding: 2px;
          </property>
          <property name="styleSheet">
           <string notr="true">#currentDate_2{
-background-color:rgba(214, 214, 214, 128);
+background-color:rgba(255, 255, 255, 128);
 color: rgb(0, 0, 0);
 font: bold 12px;
 padding: 2px;
@@ -1688,7 +1688,7 @@ padding: 1px;
 {color:black}</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- You must collect 150 points to win.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- The game is over if 5 water droplets are missed.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- The falling speed of blossoms will be doubled after collecting 5 of them.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Hold tight!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- 1 cherry blossom = 5 points.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- You must collect 150 points (30 blossoms) to win.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- The game is over if 5 cherry blossoms are missed.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;- The falling speed of blossoms will be doubled after collecting 5 of them.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Hold tight!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -1763,7 +1763,7 @@ padding: 2px;
          </property>
          <property name="styleSheet">
           <string notr="true">#currentDate_3{
-background-color:rgba(214, 214, 214, 128);
+background-color:rgba(255, 255, 255, 128);
 color: rgb(0, 0, 0);
 font: bold 12px;
 padding: 2px;
@@ -1954,7 +1954,7 @@ background-color:rgb(255, 255, 255);
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
