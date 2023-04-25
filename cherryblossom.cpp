@@ -48,13 +48,16 @@ void CherryBlossom::falling()
     qreal dx = qSin(y() / CHERRYBLOSSOM_WIND_FREQUENCY) * CHERRYBLOSSOM_WIND_EFFECT;
     setPos(x() + dx, y());
 
-    if (y() + CHERRYBLOSSOM_SIZE > BACKGROUND_HEIGHT) {
-        timer_->stop();     
-        this->deleteLater();
-        emit missDetected();
-    } else if (x() < 0 || x() >= BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE) {
+    if (x() < 0 || x() >= BACKGROUND_WIDTH - CHERRYBLOSSOM_SIZE) {
+        qDebug() << "\nfalling out with x: " << x() << " , y: " << y() << "\n";
         timer_->stop();
         this->deleteLater();
+    }
+    else if (y() + CHERRYBLOSSOM_SIZE > BACKGROUND_HEIGHT) {
+        qDebug() << "\nmiss with x: " << x() << " , y: " << y() << "\n";
+        timer_->stop();
+        this->deleteLater();
+        emit missDetected();
     }
 }
 
