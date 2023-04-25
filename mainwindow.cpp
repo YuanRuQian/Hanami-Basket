@@ -25,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->currentDate_1->setText(dateString);
     ui->currentDate_2->setText(dateString);
     ui->currentDate_3->setText(dateString);
+
+    isGuest = false;
 }
 
 
@@ -51,7 +53,7 @@ void MainWindow::on_scores_clicked()
     ui->stackedWidget->setCurrentIndex(4);
 
     Score bestScore = Score::getGlobalBestScore();
-    QVector<Score> scoreHistory = Score::getScoreHistory(userProfileName);
+    QVector<Score> scoreHistory = Score::getScoreHistory(userProfileName, isGuest);
 
     QString scoreText = "Global Best Score: " + QString::number(bestScore.score) + " by " + bestScore.username;
     ui->bestScore->setText(scoreText);
@@ -166,13 +168,14 @@ void MainWindow::on_signupButton_clicked()
 void MainWindow::on_guestButton_clicked()
 {
     userProfileName = "Guest";
+    isGuest = true;
 
     ui->userName_1->setText(userProfileName);
     ui->userName_2->setText(userProfileName);
     ui->userName_3->setText(userProfileName);
 
     // set Profile Guest Avatar
-    QString avatarPath = User::getAvatarPath(userProfileName, true);
+    QString avatarPath = User::getAvatarPath(userProfileName, isGuest);
 
     QGraphicsScene *avatarScene = new QGraphicsScene();
     QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
@@ -263,7 +266,7 @@ void MainWindow::on_signupButton_3_clicked()
 
 void MainWindow::setNonGuestUserAvatar() {
     // set Profile User Avatar
-    QString avatarPath = User::getAvatarPath(userProfileName, false);
+    QString avatarPath = User::getAvatarPath(userProfileName, isGuest);
 
     QGraphicsScene *avatarScene = new QGraphicsScene();
     QGraphicsPixmapItem *item = new QGraphicsPixmapItem();

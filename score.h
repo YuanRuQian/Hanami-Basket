@@ -18,7 +18,7 @@ public:
     static QString TIME_FORMAT;
     Score(QString username, QDateTime time, int score);
 
-    static QVector<Score> getScoreHistory(QString username);
+    static QVector<Score> getScoreHistory(QString username, bool isGuest);
     static void addScore(Score score);
     static Score getGlobalBestScore();
     static bool updateGlobalBestScore(Score score);

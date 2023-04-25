@@ -40,18 +40,19 @@ void ScoreTest::testAddScoreAndGlobalBestScore() {
 }
 
 void ScoreTest::testGetScoreHistory() {
-    QVector<Score> scores1 = Score::getScoreHistory(username1);
+    QVector<Score> scores1 = Score::getScoreHistory(username1, false);
     assert(scores1.size() == 10);
     for (Score score : scores1) {
         qDebug() << username1 << " " << score.time.toString(Score::TIME_FORMAT) << score.score;
     }
-    QVector<Score> scores2 = Score::getScoreHistory(username2);
+    QVector<Score> scores2 = Score::getScoreHistory(username2, false);
     assert(scores2.size() == 10);
     for (Score score : scores2) {
         qDebug() << username2 << " " << score.time.toString(Score::TIME_FORMAT) << score.score;
     }
-    QVector<Score> scores3 = Score::getScoreHistory("anyone"); // non-existent user
+    QVector<Score> scores3 = Score::getScoreHistory("anyone", false); // non-existent user
     assert(scores3.size() == 0);
+    assert(Score::getScoreHistory(username1, true).size() == 0);
 }
 
 void ScoreTest::testAll() {

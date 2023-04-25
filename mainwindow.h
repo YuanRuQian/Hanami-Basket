@@ -73,6 +73,7 @@ private:
     QString userProfileName;
     QDate userBirthday;
     QString userAvatar;
+    bool isGuest;
 
 };
 #endif // MAINWINDOW_H
