@@ -12,6 +12,7 @@
 
 ## Login Page
 
+![](screenshots/login.png)
 
 ## The Game
 
