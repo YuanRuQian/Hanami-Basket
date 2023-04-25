@@ -15,6 +15,7 @@ public:
     void testCheckUsername();
     void testCheckUser();
     void testIsBirthday();
+    void testCreateAvatarPath();
     void testAll();
 };
 

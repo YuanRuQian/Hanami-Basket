@@ -40,6 +40,10 @@ void GameStateMachine::handleBasketCollision()
 
 void GameStateMachine::handleMissDetection()
 {
+    if(livesCount==0) {
+        return;
+    }
+
     livesCount--;
 
     qDebug() << "\n\nTriggered: GameStateMachine::handleMissDetection()";

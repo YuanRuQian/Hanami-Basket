@@ -43,6 +43,9 @@
       <height>538</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
@@ -379,9 +382,9 @@ padding: 2px;
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="passwordText">
+        <widget class="QLineEdit" name="loginPasswordLineEdit">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -393,7 +396,10 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#passwordText{background-color:white;color:black}</string>
+          <string notr="true">background-color: #FFFFFF; color: #000000;</string>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
          </property>
         </widget>
        </item>
@@ -465,11 +471,11 @@ padding: 2px;
        <rect>
         <x>80</x>
         <y>40</y>
-        <width>379</width>
-        <height>71</height>
+        <width>137</width>
+        <height>58</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="gamenameLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="gameNameLabel_3">
          <property name="font">
@@ -519,7 +525,7 @@ padding: 2px;
        </font>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#323232;&quot;&gt;All fields required unless marked as optional.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#323232;&quot;&gt;All fields are required unless marked as optional.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_8">
@@ -562,7 +568,13 @@ padding: 2px;
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="passwordText_3">
+        <widget class="QLineEdit" name="signUpPasswordLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
            <width>300</width>
@@ -570,7 +582,10 @@ padding: 2px;
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">#passwordText_3{background-color:white;color:balck}</string>
+          <string notr="true">background-color: #FFFFFF; color: #000000;</string>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
          </property>
         </widget>
        </item>
@@ -742,10 +757,10 @@ padding: 2px;
      <widget class="QWidget" name="verticalLayoutWidget_12">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>150</y>
+        <x>500</x>
+        <y>60</y>
         <width>381</width>
-        <height>61</height>
+        <height>202</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="birthdayLayout">
@@ -780,34 +795,14 @@ padding: 2px;
 }</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Birthday (optional)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Birthday&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="birthdayEdit">
-         <property name="maximumSize">
-          <size>
-           <width>300</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#birthdayEdit{background-color:white; color:black}</string>
-         </property>
-         <property name="maximumDate">
-          <date>
-           <year>2023</year>
-           <month>1</month>
-           <day>1</day>
-          </date>
-         </property>
-         <property name="minimumDate">
-          <date>
-           <year>1900</year>
-           <month>1</month>
-           <day>1</day>
-          </date>
+        <widget class="QCalendarWidget" name="calendarWidget">
+         <property name="gridVisible">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -816,8 +811,8 @@ padding: 2px;
      <widget class="QWidget" name="verticalLayoutWidget_13">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>220</y>
+        <x>500</x>
+        <y>280</y>
         <width>381</width>
         <height>81</height>
        </rect>
@@ -904,18 +899,48 @@ padding: 2px;
       <property name="geometry">
        <rect>
         <x>510</x>
-        <y>310</y>
-        <width>381</width>
-        <height>111</height>
+        <y>380</y>
+        <width>293</width>
+        <height>154</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="profileLayout">
-       <item>
-        <widget class="QLabel" name="usernameLabel_5">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="2" column="0">
+        <widget class="QPushButton" name="profilePictureUploader">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maximumSize">
           <size>
-           <width>150</width>
-           <height>16777215</height>
+           <width>250</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Click To Upload Profile Picture</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="usernameLabel_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>60</height>
           </size>
          </property>
          <property name="font">
@@ -935,14 +960,26 @@ padding: 2px;
 }</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Profile Picture (optional)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;* Only support .png and .jpg&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p  style=&quot;font-family: Helvetica; font-size:11pt;&quot;&gt;Profile Picture (optional)&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: Helvetica; font-size:10pt;&quot;&gt;png / jp(e)g / bmp / gif&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QLabel" name="label">
+       <item row="0" column="1">
+        <widget class="QLabel" name="imagePreviewLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>60</height>
+          </size>
+         </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>No Profile</string>
          </property>
         </widget>
        </item>
@@ -1596,7 +1633,7 @@ padding: 2px;
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

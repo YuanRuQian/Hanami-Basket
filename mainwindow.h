@@ -30,6 +30,8 @@ private slots:
 
     void on_back2_clicked();
 
+    void on_game_level_choosed(QString gameLevel);
+
     void on_easy_clicked();
 
     void on_medium_clicked();
@@ -44,12 +46,25 @@ private slots:
 
     void on_signupButton_3_clicked();
 
+    void on_calendarWidget_selectionChanged();
+
+    void on_profilePictureUploader_released();
+
+    QString getProfilePicturePath();
+
+    void setNonGuestUserAvatar();
+
+    void updateProfilePicturePreview(QString fileName);
+
+    void setBirthdayGreeting();
+
 private:
     Ui::MainWindow *ui;
     QDate date;
     CanvasWidget *game;
-
     QString userProfileName;
+    QDate userBirthday;
+    QString userAvatar;
 
 };
 #endif // MAINWINDOW_H
