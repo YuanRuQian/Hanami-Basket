@@ -14,6 +14,14 @@
 
 ![](screenshots/login.png)
 
+## Signup Page
+
+
+
+### Signup Confirmation
+
+![](screenshots/signup_confirmation.png)
+
 ## After Login or Signup Page
 
 ![](screenshots/after_login_or_signup.png)
