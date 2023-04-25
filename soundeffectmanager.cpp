@@ -7,9 +7,9 @@ SoundEffectManager::SoundEffectManager(QObject *parent) : QObject(parent)
 {
     m_backgroundMusicPlayer.setSource(QUrl::fromLocalFile("://sounds/anExcerptOnCherryBlossoms.wav"));
 
-    m_collisionPlayer.setSource(QUrl::fromLocalFile("://sounds/fuiyoh.wav"));
+    m_collisionPlayer.setSource(QUrl::fromLocalFile("://sounds/ding.wav"));
 
-    m_missPlayer.setSource(QUrl::fromLocalFile("://sounds/haiyaa.wav"));
+    m_missPlayer.setSource(QUrl::fromLocalFile("://sounds/sadWhistle.wav"));
 
     m_soundEffects.append(&m_collisionPlayer);
 
