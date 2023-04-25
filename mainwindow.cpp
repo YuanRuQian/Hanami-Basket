@@ -128,7 +128,7 @@ void MainWindow::on_loginButton_clicked()
         }
         else {
             // CHECK IF USERNAME MATCHES PASSWORD
-            QString password = ui->passwordText->toPlainText();
+            QString password = ui->loginPasswordLineEdit->text();
 
             if (User::checkUser(username, password)) {
                 // LOGIN SUCCESS
@@ -229,7 +229,7 @@ void MainWindow::on_signupButton_3_clicked()
         errorMsg = "User name already exists!";
     }
     else {
-        QString password = ui->passwordText_3->toPlainText();
+        QString password = ui->signUpPasswordLineEdit->text();
 
         if (! User::checkPassword(password)) {
             errorMsg = "Your password should include at least 8 characters and at least one "
