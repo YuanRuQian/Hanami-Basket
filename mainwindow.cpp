@@ -6,6 +6,7 @@
 #include "soundeffectmanager.h"
 
 #include <QFileDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -52,12 +53,14 @@ void MainWindow::on_scores_clicked()
     Score bestScore = Score::getGlobalBestScore();
     QVector<Score> scoreHistory = Score::getScoreHistory(userProfileName);
 
-    QString scoreText = "Best Score: " + QString::number(bestScore.score) + "\nUser: " + bestScore.username + "\n";
-    scoreText += "\nYour Score History:";
+    QString scoreText = "Global Best Score: " + QString::number(bestScore.score) + " by " + bestScore.username;
+    ui->bestScore->setText(scoreText);
+
+    QString score_line = "Your Score History:";
 
     for(int i = 0; i<scoreHistory.size(); i++){
-        scoreText += "\n" + scoreHistory[i].time.toString(Score::TIME_FORMAT) + "     ";
-        scoreText += QString::number(scoreHistory[i].score);
+        score_line += "\n" + scoreHistory[i].time.toString(Score::TIME_FORMAT) + "     ";
+        score_line += QString::number(scoreHistory[i].score);
     }
 
     ui->scoreHistory->setText(scoreText);
@@ -137,6 +140,7 @@ void MainWindow::on_loginButton_clicked()
 
                 // go to game page
                 ui->stackedWidget->setCurrentIndex(2);
+                clearLogin();
             }
             else {
                 errorMsg = "Invalid password!";
@@ -155,6 +159,7 @@ void MainWindow::on_signupButton_clicked()
 {
     // go to sign up page
     ui->stackedWidget->setCurrentIndex(1);
+    clearLogin();
 }
 
 
@@ -180,6 +185,7 @@ void MainWindow::on_guestButton_clicked()
 
     // go to game page
     ui->stackedWidget->setCurrentIndex(2);
+    clearLogin();
 }
 
 
@@ -222,6 +228,13 @@ void MainWindow::on_signupButton_3_clicked()
 
             if (addUserReturn == success) {
                 // sign up success, go to game page
+
+                QMessageBox *msgBox = new QMessageBox();
+                msgBox->setWindowTitle("Create New Account");
+                msgBox->setText("Account Creation Successful!");
+                msgBox->setIconPixmap(QPixmap("../../../../Hanami-Basket/icon.icns"));
+                msgBox->exec();
+
                 ui->stackedWidget->setCurrentIndex(2);
 
                 userProfileName = username;
@@ -236,6 +249,8 @@ void MainWindow::on_signupButton_3_clicked()
                 ui->userName_3->setText(userProfileName);
 
                 setNonGuestUserAvatar();
+
+                clearSignup();
             }
             else {
                 errorMsg = "Oops, there's something wrong while we trying to store your profile..";
@@ -313,5 +328,31 @@ void MainWindow::setBirthdayGreeting() {
 void MainWindow::on_profilePictureUploader_released()
 {
     userAvatar = getProfilePicturePath();
+}
+
+
+void MainWindow::on_backToLogin_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_logout_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::clearLogin(){
+    ui->usernameText->clear();
+    ui->loginPasswordLineEdit->clear();
+}
+
+void MainWindow:: clearSignup(){
+
+    ui->usernameText_3->clear();
+    ui->signUpPasswordLineEdit->clear();
+    ui->firstnameText->clear();
+    ui->lastnameText->clear();
+
 }
 

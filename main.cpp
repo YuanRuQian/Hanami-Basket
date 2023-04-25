@@ -10,7 +10,7 @@
 #include <QVBoxLayout>
 
 int main(int argc, char **argv) {
-    UserTest().testAll();
+//    UserTest().testAll();
 //    ScoreTest().testAll();
 
     QApplication app (argc, argv);

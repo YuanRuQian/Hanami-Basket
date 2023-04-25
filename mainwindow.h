@@ -58,6 +58,14 @@ private slots:
 
     void setBirthdayGreeting();
 
+    void on_backToLogin_clicked();
+
+    void on_logout_clicked();
+
+    void clearLogin();
+
+    void clearSignup();
+
 private:
     Ui::MainWindow *ui;
     QDate date;

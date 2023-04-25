@@ -122,6 +122,7 @@ void CanvasWidget::terminateTheGame() {
     // pop out the message box and back to the start screen if button clicked
     QMessageBox *msgBox = new QMessageBox();
     msgBox->setWindowTitle("Game Over");
+    msgBox->setIconPixmap(QPixmap("../../../../Hanami-Basket/icon.icns"));
     msgBox->setInformativeText("Your score is " + scoreCountLabel->text());
     msgBox->setText("Oops...You died...");
 
