@@ -233,9 +233,6 @@ void MainWindow::on_signupButton_3_clicked()
             if (ui->maleButton->isChecked()) {
                 gender = "male";
             }
-            if (ui->femaleButton->isChecked()) {
-                gender = "nonbinary";
-            }
 
             if (User::addUser(username, password,
                               ui->firstnameText->toPlainText(),
