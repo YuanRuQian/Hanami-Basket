@@ -935,9 +935,26 @@ padding: 2px;
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QPushButton" name="profilePictureUploader">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string>Click To Upload Profile Picture</string>
          </property>
         </widget>
        </item>

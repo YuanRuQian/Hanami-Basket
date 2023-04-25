@@ -5,6 +5,8 @@
 #include "score.h"
 #include "soundeffectmanager.h"
 
+#include <QFileDialog>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -134,24 +136,7 @@ void MainWindow::on_loginButton_clicked()
                 ui->userName_2->setText(userProfileName);
                 ui->userName_3->setText(userProfileName);
 
-                // set Profile User Avatar
-                QString avatarPath = User::getAvatarPath(userProfileName, false);
-
-                QGraphicsScene *avatarScene = new QGraphicsScene();
-                QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
-                QPixmap p (avatarPath);
-                //    qDebug()<< p.width() << p.height();
-                if(p.width() == p.height()){
-                    item->setPixmap(p.scaled(ui->avatar_1->size()));
-                }
-                else{
-                    item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
-                }
-
-                avatarScene->addItem(item);
-                ui->avatar_1->setScene(avatarScene);
-                ui->avatar_2->setScene(avatarScene);
-                ui->avatar_3->setScene(avatarScene);
+                setNonGuestUserAvatar();
 
                 // go to game page
                 ui->stackedWidget->setCurrentIndex(2);
@@ -213,6 +198,8 @@ void MainWindow::on_signupButton_3_clicked()
     std::string errorMsg = "";
     QString username = ui->usernameText_3->toPlainText();
 
+    qDebug() << "User birthday : " << userBirthday << "\n";
+
     if (User::checkUsername(username)) {
         errorMsg = "User name already exists!";
     }
@@ -234,12 +221,16 @@ void MainWindow::on_signupButton_3_clicked()
                 gender = "male";
             }
 
-            if (User::addUser(username, password,
-                              ui->firstnameText->toPlainText(),
-                              ui->lastnameText->toPlainText(),
-                              QString::fromStdString(gender),
-                              QString::fromStdString(""),
-                              userBirthday) == success) {
+            auto addUserReturn = User::addUser(username, password,
+                                               ui->firstnameText->toPlainText(),
+                                               ui->lastnameText->toPlainText(),
+                                               QString::fromStdString(gender),
+                                               userAvatar,
+                                               userBirthday);
+
+            qDebug() << "addUserReturn: " << addUserReturn << "\n";
+
+            if (addUserReturn == success) {
                 // sign up success, go to game page
                 ui->stackedWidget->setCurrentIndex(2);
 
@@ -248,6 +239,8 @@ void MainWindow::on_signupButton_3_clicked()
                 ui->userName_1->setText(userProfileName);
                 ui->userName_2->setText(userProfileName);
                 ui->userName_3->setText(userProfileName);
+
+                setNonGuestUserAvatar();
             }
             else {
                 errorMsg = "Oops, there's something wrong while we trying to store your profile..";
@@ -258,8 +251,53 @@ void MainWindow::on_signupButton_3_clicked()
     ui->errorMessage_2->setText(QString::fromStdString(errorMsg));
 }
 
+void MainWindow::setNonGuestUserAvatar() {
+    // set Profile User Avatar
+    QString avatarPath = User::getAvatarPath(userProfileName, false);
+
+    QGraphicsScene *avatarScene = new QGraphicsScene();
+    QGraphicsPixmapItem *item = new QGraphicsPixmapItem();
+    QPixmap p (avatarPath);
+    //    qDebug()<< p.width() << p.height();
+    if(p.width() == p.height()){
+        item->setPixmap(p.scaled(ui->avatar_1->size()));
+    }
+    else{
+        item->setPixmap(p.scaled(ui->avatar_1->size() * 1.5));
+    }
+
+    avatarScene->addItem(item);
+    ui->avatar_1->setScene(avatarScene);
+    ui->avatar_2->setScene(avatarScene);
+    ui->avatar_3->setScene(avatarScene);
+}
+
 void MainWindow::on_calendarWidget_selectionChanged()
 {
     userBirthday = ui->calendarWidget->selectedDate();
+}
+
+QString MainWindow::getProfilePicturePath() {
+    QFileDialog dialog(this);
+
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setNameFilter(tr("Image files (*.png *.jpg *.jpeg *.bmp *.gif)"));
+    dialog.setViewMode(QFileDialog::Detail);
+
+    if (dialog.exec())
+    {
+        qDebug() << "dialog.selectedFiles().first(): " << dialog.selectedFiles().first();
+        return dialog.selectedFiles().first();
+    }
+    else
+    {
+        return QString();
+    }
+}
+
+
+void MainWindow::on_profilePictureUploader_released()
+{
+    userAvatar = getProfilePicturePath();
 }
 
