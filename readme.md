@@ -42,6 +42,12 @@
 
 - Use the left (⬅️) and right (➡️) arrow keys to move the basket and catch falling cherry blossoms
 
-## When the Player Exhausts All of Their Remaining Lives
+## When the Player Loses the Game
 
-![](screenshots/death.png)
+![](screenshots/lose.png)
+
+## When the Player Wins the Game
+
+> The score of 50 shown in the screenshot is solely for testing purposes, as the actual winning threshold is set at 150 (which, dare I say, is quite challenging even for the easy level).
+
+![](screenshots/win.png)
