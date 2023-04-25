@@ -20,9 +20,20 @@
 
 - If today happens to be the player's birthday, they will receive a special birthday greeting.
 
+## Score Page
+
+// TODO
+
+## Game Instructions & Game Level Page
+
+// TODO
+
 ## The Game
 
 ![](screenshots/game_scene.png)
 
 - Use the left (⬅️) and right (➡️) arrow keys to move the basket and catch falling cherry blossoms
 
+## When the Player Exhausts All of Their Remaining Lives
+
+![](screenshots/death.png)
