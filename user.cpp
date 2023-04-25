@@ -122,10 +122,45 @@ QJsonObject User::getUserData(QString username) {
     return doc.object();
 }
 
+/**
+ * @brief Get a user's profile picture path.
+ * @param username -- the username of the specified user
+ * @param isGuest -- if this is a guest
+ * @return If this is a guest, return the guest avatar path,
+ * otherwise the user's avatar path.
+ */
 QString User::getAvatarPath(QString username, bool isGuest) {
     if (isGuest) {
         return GUEST_AVATAR_PATH;
     }
     QJsonObject obj = User::getUserData(username);
-    return AVATAR_PATH + obj["avatar"].toString();
+    return obj["avatar"].toString();
+}
+
+/**
+ * @brief Generate a file name for a user's profile picture. The file
+ * is named as "<username>.<file extension>"
+ * @param username -- the username of the specified user
+ * @param filePath -- the file's original path
+ * @return the generated file path
+ */
+QString User::createAvatarFileName(QString username, QString filePath) {
+    std::string path = filePath.toStdString();
+    size_t index = path.find_last_of(".");
+    if (index != std::string::npos) {
+        std::string extension = path.substr(index + 1);
+        return username.toLower() + "." + QString::fromStdString(extension);
+    }
+    return username;
+}
+
+/**
+ * @brief Generate a file path for a user's profile picture. The file
+ * is named as "<username>.<file extension>" and stored under AVATAR_PATH
+ * @param username -- the username of the specified user
+ * @param filePath -- the file's original path
+ * @return the generated file path
+ */
+QString User::createAvatarPath(QString username, QString filePath) {
+    return AVATAR_PATH + createAvatarFileName(username, filePath);
 }

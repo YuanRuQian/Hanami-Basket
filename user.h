@@ -36,6 +36,8 @@ public:
     static QString getUserFilePath(QString username);
     static QJsonObject getUserData(QString username);
     static QString getAvatarPath(QString username, bool isGuest);
+    static QString createAvatarFileName(QString username, QString filePath);
+    static QString createAvatarPath(QString username, QString filePath);
 };
 
 #endif // USER_H
