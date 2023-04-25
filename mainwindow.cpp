@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->congrats->hide();
 
-//    userProfileName =  "user_test";
+    //    userProfileName =  "user_test";
 
     // set Profile Current Date
     date = QDate::currentDate();
@@ -75,44 +75,32 @@ void MainWindow::on_back2_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-
-void MainWindow::on_easy_clicked()
-{
-
+void MainWindow::on_game_level_choosed(QString gameLevel) {
     GameStateMachine* gameStateMachine = GameStateMachine::instance();
-    gameStateMachine->setGameLevelWithText(QString("Easy"));
+    gameStateMachine->setGameLevelWithText(gameLevel);
     gameStateMachine->setGameUsername(userProfileName);
     game = new CanvasWidget();
     ui->stackedWidget->insertWidget(5,game);
     ui->stackedWidget->setCurrentIndex(5);
 
     connect(game, &CanvasWidget::backToStart, this, &MainWindow::on_back1_clicked);
+}
+
+void MainWindow::on_easy_clicked()
+{
+    on_game_level_choosed(ui->easy->text());
 }
 
 
 void MainWindow::on_medium_clicked()
 {   
-    GameStateMachine* gameStateMachine = GameStateMachine::instance();
-    gameStateMachine->setGameLevelWithText(QString("Medium"));
-    gameStateMachine->setGameUsername(userProfileName);
-    game = new CanvasWidget();
-    ui->stackedWidget->insertWidget(5,game);
-    ui->stackedWidget->setCurrentIndex(5);
-
-    connect(game, &CanvasWidget::backToStart, this, &MainWindow::on_back1_clicked);
+    on_game_level_choosed(ui->medium->text());
 }
 
 
 void MainWindow::on_hard_clicked()
 {
-    GameStateMachine* gameStateMachine = GameStateMachine::instance();
-    gameStateMachine->setGameLevelWithText(QString("Hard"));
-    gameStateMachine->setGameUsername(userProfileName);
-    game = new CanvasWidget();
-    ui->stackedWidget->insertWidget(5,game);
-    ui->stackedWidget->setCurrentIndex(5);
-
-    connect(game, &CanvasWidget::backToStart, this, &MainWindow::on_back1_clicked);
+    on_game_level_choosed(ui->hard->text());
 }
 
 
@@ -234,8 +222,9 @@ void MainWindow::on_signupButton_3_clicked()
         if (! User::checkPassword(password)) {
             errorMsg = "Your password should include at least 8 characters and at least one "
                        "number, one upper and one lower case letter.";
-        }
-        else {
+        } else if(userBirthday.isNull()) {
+            errorMsg = "Please enter your birthday.";
+        } else {
             std::string gender = "";
 
             if (ui->femaleButton->isChecked()) {
@@ -270,10 +259,6 @@ void MainWindow::on_signupButton_3_clicked()
                 errorMsg = "Oops, there's something wrong while we trying to store your profile..";
             }
         }
-    }
-
-    if(userBirthday.isNull()) {
-        errorMsg = "Please enter your birthday.";
     }
 
     ui->errorMessage_2->setText(QString::fromStdString(errorMsg));

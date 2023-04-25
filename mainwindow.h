@@ -30,6 +30,8 @@ private slots:
 
     void on_back2_clicked();
 
+    void on_game_level_choosed(QString gameLevel);
+
     void on_easy_clicked();
 
     void on_medium_clicked();
