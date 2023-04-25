@@ -299,6 +299,11 @@ QString MainWindow::getProfilePicturePath() {
     dialog.setNameFilter(tr("Image files (*.png *.jpg *.jpeg *.bmp *.gif)"));
     dialog.setViewMode(QFileDialog::Detail);
 
+    // Set the default directory to the user folder instead of the default macos folder in build path
+    QString currentPath = QDir::currentPath();
+    QString parentPath = QDir(currentPath).absolutePath() + "/../../../..";
+    dialog.setDirectory(parentPath);
+
     if (dialog.exec())
     {
         QString selectedFile = dialog.selectedFiles().first();
