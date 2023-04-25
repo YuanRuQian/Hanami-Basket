@@ -66,28 +66,22 @@ bool User::checkUser(QString username, QString password) {
 }
 
 /**
- * @brief add a new user to the databse.
- * @param user
- * @return true if the user is successfully added. Otherwise return false.
+ * @brief Add a new user to the database and store its avatar in the destination folder.
+ * @return an error message.
  */
-error_t User::addUser(User user) {
-    if (User::checkUsername(user.username)) {
-        qDebug() << user.username << "already exists!";
+error_t User::addUser(QString username, QString password, QString firstName, QString lastName, QString gender, QString avatarSrcPath, QDate birthday) {
+    if (User::checkUsername(username)) {
+        qDebug() << username << "already exists!";
         return duplicate_username;
     }
-    if (!User::checkPassword(user.password)) {
-        qDebug() << user.password << "is invalid!";
+    if (!User::checkPassword(password)) {
+        qDebug() << password << "is invalid!";
         return invalid_password;
     }
-    QJsonObject jsonObj;
-    jsonObj["username"] = user.username;
-    jsonObj["password"] = user.password;
-    jsonObj["firstName"] = user.firstName;
-    jsonObj["lastName"] = user.lastName;
-    jsonObj["gender"] = user.gender;
-    jsonObj["avatar"] = user.avatar;
-    jsonObj["birthday"] = user.birthday.toString("yyyy-MM-dd");
-    return JsonFileUtils::writeObject(User::getUserFilePath(user.username), jsonObj);
+    QString avatarDestPath = createAvatarPath(username, avatarSrcPath);
+    User user(username, password, firstName, lastName, gender, avatarDestPath, birthday);
+    copyFile(avatarSrcPath, avatarDestPath);
+    return JsonFileUtils::writeObject(User::getUserFilePath(user.username), User::userToJsonObject(user));
 }
 
 /**
@@ -122,10 +116,86 @@ QJsonObject User::getUserData(QString username) {
     return doc.object();
 }
 
+/**
+ * @brief Get a user's profile picture path.
+ * @param username -- the username of the specified user
+ * @param isGuest -- if this is a guest
+ * @return If this is a guest, return the guest avatar path,
+ * otherwise the user's avatar path.
+ */
 QString User::getAvatarPath(QString username, bool isGuest) {
     if (isGuest) {
         return GUEST_AVATAR_PATH;
     }
     QJsonObject obj = User::getUserData(username);
-    return AVATAR_PATH + obj["avatar"].toString();
+    return obj["avatar"].toString();
+}
+
+/**
+ * @brief Generate a file name for a user's profile picture. The file
+ * is named as "<username>.<file extension>"
+ * @param username -- the username of the specified user
+ * @param filePath -- the file's original path
+ * @return the generated file path
+ */
+QString User::createAvatarFileName(QString username, QString filePath) {
+    std::string path = filePath.toStdString();
+    size_t index = path.find_last_of(".");
+    if (index != std::string::npos) {
+        std::string extension = path.substr(index + 1);
+        return username.toLower() + "." + QString::fromStdString(extension);
+    }
+    return username;
+}
+
+/**
+ * @brief Generate a file path for a user's profile picture. The file
+ * is named as "<username>.<file extension>" and stored under AVATAR_PATH
+ * @param username -- the username of the specified user
+ * @param filePath -- the file's original path
+ * @return the generated file path
+ */
+QString User::createAvatarPath(QString username, QString filePath) {
+    return AVATAR_PATH + createAvatarFileName(username, filePath);
+}
+
+bool User::copyFile(const QString &srcFilePath, const QString &destFilePath)
+{
+    QFile srcFile(srcFilePath);
+    QFileInfo srcFileInfo(srcFile);
+    QFile destFile(destFilePath);
+
+    qDebug() << "srcFilePath: " << srcFilePath;
+    qDebug() << "destFilePath: " << destFilePath;
+
+    if (!srcFile.exists() || !srcFile.open(QIODevice::ReadOnly) || !destFile.open(QIODevice::WriteOnly))
+    {
+        qDebug() << "Failed to open files";
+        return false;
+    }
+
+    QByteArray buffer;
+    while (!srcFile.atEnd())
+    {
+        buffer = srcFile.read(1048576);
+        destFile.write(buffer);
+    }
+
+    srcFile.close();
+    destFile.close();
+
+    qDebug() << "File copied successfully";
+    return true;
+}
+
+QJsonObject User::userToJsonObject(User user) {
+    QJsonObject jsonObj;
+    jsonObj["username"] = user.username;
+    jsonObj["password"] = user.password;
+    jsonObj["firstName"] = user.firstName;
+    jsonObj["lastName"] = user.lastName;
+    jsonObj["gender"] = user.gender;
+    jsonObj["avatar"] = user.avatar;
+    jsonObj["birthday"] = user.birthday.toString("yyyy-MM-dd");
+    return jsonObj;
 }

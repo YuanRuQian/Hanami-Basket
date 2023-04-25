@@ -237,15 +237,20 @@ void MainWindow::on_signupButton_3_clicked()
                 gender = "nonbinary";
             }
 
-            // User(QString uname, QString pwd, QString firstN, QString lastN, QString gender, QString avatar, QDate bDay);
-            User currentUser(username, password,
-                             ui->firstnameText->toPlainText(),
-                             ui->lastnameText->toPlainText(),
-                             QString::fromStdString(gender),
-                             QString::fromStdString(""),
-                             userBirthday);
+//            // User(QString uname, QString pwd, QString firstN, QString lastN, QString gender, QString avatar, QDate bDay);
+//            User currentUser(username, password,
+//                             ui->firstnameText->toPlainText(),
+//                             ui->lastnameText->toPlainText(),
+//                             QString::fromStdString(gender),
+//                             QString::fromStdString(""),
+//                             userBirthday);
 
-            if (User::addUser(currentUser)) {
+            if (User::addUser(username, password,
+                              ui->firstnameText->toPlainText(),
+                              ui->lastnameText->toPlainText(),
+                              QString::fromStdString(gender),
+                              QString::fromStdString(""),
+                              userBirthday)) {
                 // sign up success, go to game page
                 ui->stackedWidget->setCurrentIndex(2);
 

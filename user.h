@@ -32,10 +32,15 @@ public:
     static bool checkPassword(QString password);
     static bool checkUser(QString username, QString password);
     static error_t addUser(User user);
+    static error_t addUser(QString username, QString password, QString firstName, QString lastName, QString gender, QString avatarSrcPath, QDate birthday);
     static bool isBirthday(QString username);
     static QString getUserFilePath(QString username);
     static QJsonObject getUserData(QString username);
     static QString getAvatarPath(QString username, bool isGuest);
+    static QString createAvatarFileName(QString username, QString filePath);
+    static QString createAvatarPath(QString username, QString filePath);
+    static bool copyFile(const QString &srcFilePath, const QString &destFolderPath);
+    static QJsonObject userToJsonObject(User user);
 };
 
 #endif // USER_H
