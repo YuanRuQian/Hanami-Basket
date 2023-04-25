@@ -44,12 +44,15 @@ private slots:
 
     void on_signupButton_3_clicked();
 
+    void on_calendarWidget_selectionChanged();
+
 private:
     Ui::MainWindow *ui;
     QDate date;
     CanvasWidget *game;
-
     QString userProfileName;
+    QDate userBirthday;
+    QString userAvatar;
 
 };
 #endif // MAINWINDOW_H

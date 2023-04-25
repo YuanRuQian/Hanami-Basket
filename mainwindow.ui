@@ -37,8 +37,8 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>-10</x>
+      <y>-40</y>
       <width>1000</width>
       <height>538</height>
      </rect>
@@ -742,10 +742,10 @@ padding: 2px;
      <widget class="QWidget" name="verticalLayoutWidget_12">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>150</y>
+        <x>500</x>
+        <y>60</y>
         <width>381</width>
-        <height>61</height>
+        <height>202</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="birthdayLayout">
@@ -780,34 +780,14 @@ padding: 2px;
 }</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Birthday (optional)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Birthday&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="birthdayEdit">
-         <property name="maximumSize">
-          <size>
-           <width>300</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#birthdayEdit{background-color:white; color:black}</string>
-         </property>
-         <property name="maximumDate">
-          <date>
-           <year>2023</year>
-           <month>1</month>
-           <day>1</day>
-          </date>
-         </property>
-         <property name="minimumDate">
-          <date>
-           <year>1900</year>
-           <month>1</month>
-           <day>1</day>
-          </date>
+        <widget class="QCalendarWidget" name="calendarWidget">
+         <property name="gridVisible">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -816,8 +796,8 @@ padding: 2px;
      <widget class="QWidget" name="verticalLayoutWidget_13">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>220</y>
+        <x>500</x>
+        <y>280</y>
         <width>381</width>
         <height>81</height>
        </rect>
@@ -904,7 +884,7 @@ padding: 2px;
       <property name="geometry">
        <rect>
         <x>510</x>
-        <y>310</y>
+        <y>380</y>
         <width>381</width>
         <height>111</height>
        </rect>
@@ -1596,7 +1576,7 @@ padding: 2px;
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
