@@ -49,8 +49,8 @@
                          </base-DElement>
                          <object>{b29d3b53-1f73-4f1c-b858-42dcbaeafa6a}</object>
                          <name>User</name>
-                         <pos>x:145;y:110</pos>
-                         <rect>x:-90;y:-115;w:180;h:230</rect>
+                         <pos>x:145;y:105</pos>
+                         <rect>x:-165;y:-155;w:330;h:310</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -70,8 +70,8 @@
                          </base-DElement>
                          <object>{780a6d07-9009-4986-808d-d73261757659}</object>
                          <name>Score</name>
-                         <pos>x:475;y:80</pos>
-                         <rect>x:-145;y:-70;w:290;h:140</rect>
+                         <pos>x:175;y:385</pos>
+                         <rect>x:-195;y:-110;w:390;h:220</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -81,7 +81,7 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1681962124245</last-modified>
+                  <last-modified>1682477781441</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -140,7 +140,7 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{2710a928-7ae5-4650-819d-021930da6ec3}</uid>
+                    <uid>{be50d1c5-ded2-43fc-adab-31b9666a1826}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>string username</declaration>
@@ -148,7 +148,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{df8f11d5-7ebb-4c97-9c1d-f99b724e5fb1}</uid>
+                    <uid>{a39a304c-bde4-421b-9399-a75ccf59c613}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>string pssword</declaration>
@@ -156,7 +156,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{b9f0dc6d-5b80-4eb9-9334-e1329dbee331}</uid>
+                    <uid>{77e1ec45-0168-4eeb-9929-78d98b50a762}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>string firstName</declaration>
@@ -164,7 +164,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{e534f647-8a6d-4ae3-bdf6-d485fe939f9a}</uid>
+                    <uid>{2db88c49-6adb-474b-9110-298256b6e108}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>string lastName</declaration>
@@ -172,7 +172,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5ebad7ca-313d-4231-9ca7-f5f418795a7f}</uid>
+                    <uid>{8a3d433a-7a4e-41f8-8ee4-40176f1bfb82}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>DateTime birthday</declaration>
@@ -180,7 +180,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{0ae77944-3255-4953-bc3f-6ddbc1f4f458}</uid>
+                    <uid>{166c7417-d00a-4ad4-9187-63b909534e54}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>string gender</declaration>
@@ -188,54 +188,109 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{baedc3c3-cc33-41bd-a738-c8f4b8089dbe}</uid>
+                    <uid>{0aab6157-2db2-403e-9613-3ebefd24e249}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
-                    <declaration>string picture</declaration>
+                    <declaration>string avatar</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{f83109dc-aabe-4b15-876b-3aeb73f004e1}</uid>
+                    <uid>{c4ff81ed-fc2b-44b9-b6d1-29a59894a766}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>bool checkUser()</declaration>
+                    <declaration>bool checkUsername(username)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{06756f75-3f76-440c-948c-aba890383122}</uid>
+                    <uid>{b96312db-2d41-40bc-9490-fa2ec1ef2bad}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>void addUser()</declaration>
+                    <declaration>bool checkPassword(password)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{fcd7e55b-4723-4561-abbe-c0eb11f44610}</uid>
+                    <uid>{01e33bba-6687-4b39-9a1e-307cf998db96}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>bool checkUsername()</declaration>
+                    <declaration>bool checkUser(username, password)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{6072c32a-3107-4c6b-8f8c-85b67c534b6f}</uid>
+                    <uid>{c7da9895-ca95-4c15-8f26-c4bf31085e6a}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>bool checkPassword()</declaration>
+                    <declaration>error_t addUser(user)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{c12f9340-8ba2-4a00-b9d4-a5f74e10a49e}</uid>
+                    <uid>{de6bbb1a-b895-4e1c-bb77-19df00bf2fd8}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
-                    <declaration>bool isBirthday()</declaration>
+                    <properties>64</properties>
+                    <declaration>bool isBirthday(username)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{000da208-b6c2-41e8-9edf-98870a42144a}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QString getUserFilePath(username)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{74f2411e-f73a-4302-906c-7c1648220af5}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QJsonObject getUserData(username)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{5d9cc964-af5b-4c44-8336-0075ed8cb72b}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QString getAvatarPath(username, isGuest)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{c82b0780-7471-486f-b4a7-3f9748a9962b}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QString createAvatarFileName(username, filePath)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{e9f8cfa8-5bb9-4efd-9951-694a6a123660}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>bool copyFile(srcFilePath, destFilePath)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{e2264c16-e2ed-45cf-9bd8-5ca84ac2bdd3}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QJsonObject(user)</declaration>
                    </MClassMember>
                   </item>
                  </qlist>
@@ -265,7 +320,7 @@
                  <qlist>
                   <item>
                    <MClassMember>
-                    <uid>{c7b2eb4a-97e9-49ee-9368-046eb3994347}</uid>
+                    <uid>{c656e6ed-e953-42fa-9a56-ae1746e3dade}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>string username</declaration>
@@ -273,7 +328,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{c156ab03-709f-4039-a952-a46ad7ad65c5}</uid>
+                    <uid>{01181c59-9454-4041-83bd-aba4c980ac9f}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>DateTime time</declaration>
@@ -281,7 +336,7 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{2b87fd0b-ddd4-48fc-bf0a-9ecff796c17f}</uid>
+                    <uid>{e626fa1c-21d8-4fff-a47d-2bda919949ca}</uid>
                     <visibility>3</visibility>
                     <type>1</type>
                     <declaration>int score</declaration>
@@ -289,29 +344,83 @@
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{6a7daaf0-6b82-4332-b542-776742b24e25}</uid>
+                    <uid>{6e0cbcbe-85f8-47b8-a128-2cf820930b5a}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>addScore()</declaration>
+                    <declaration>void addScore()</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{5fcc1dce-e47f-4c5e-a492-0834c1fad9a6}</uid>
+                    <uid>{ab9e8e70-4d0b-4bf2-9603-f5dd59af3ed9}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>vector&lt;score&gt; getScoreHistory(User user)</declaration>
+                    <declaration>vector&lt;score&gt; getScoreHistory(user)</declaration>
                    </MClassMember>
                   </item>
                   <item>
                    <MClassMember>
-                    <uid>{248c1e9c-b528-4cc5-aa2f-89a9dd5b0181}</uid>
+                    <uid>{91ffd6b7-0281-438e-b460-e4312e4010eb}</uid>
                     <visibility>1</visibility>
                     <type>2</type>
                     <properties>64</properties>
-                    <declaration>score getGlobalBestScore()</declaration>
+                    <declaration>Score getGlobalBestScore()</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{ea5e1604-edff-4e58-a5e1-585e5894c439}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>bool updateGlobalBestScore(score)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{d186c198-eab9-4814-8c41-e95c57d224fa}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>void insertNewRecord(username, score)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{7ce501af-e3b8-45b4-a4b0-ed7a2ab5a352}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QString getScoreFilePath(username)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{cc21eb5d-3381-4695-b921-f7f760ff9a81}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QJsonArray getScoreData(username)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{74905e71-153d-4912-9b67-b70e5d13b010}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>Score jsonObjectToScore(QJsonObject obj)</declaration>
+                   </MClassMember>
+                  </item>
+                  <item>
+                   <MClassMember>
+                    <uid>{fd220ee6-12b6-445c-a5a0-4d257cf553fc}</uid>
+                    <visibility>1</visibility>
+                    <type>2</type>
+                    <properties>64</properties>
+                    <declaration>QJsonObject scoreToJsonObject(score, addUsername = false)</declaration>
                    </MClassMember>
                   </item>
                  </qlist>
