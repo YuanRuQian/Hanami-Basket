@@ -33,6 +33,7 @@ public:
     float getCurrentBasketMoveStep();
     void insertNewScoreRecord();
     void resetScoreAndLivesState();
+    void resetScoreAndLivesStateAndIsGuest();
 
 private:
     // Private constructor and destructor to prevent direct instantiation and deletion
@@ -59,6 +60,7 @@ public slots:
     void handleMissDetection();
     void setGameLevelWithText(QString gameLevelText);
     void setGameUsername(QString username);
+    void setIsGuest(bool isGuest);
 
 
 private:
@@ -70,6 +72,7 @@ private:
     GameLevelConfig getDefaultGameLevelConfig();
     void setGameLevel(GameLevel gameLevel);
     QString username;
+    bool isGuest;
 };
 
 #endif // GAMESTATEMACHINE_H

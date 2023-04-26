@@ -169,6 +169,7 @@ void MainWindow::on_guestButton_clicked()
 {
     userProfileName = "Guest";
     isGuest = true;
+    GameStateMachine::instance()->setIsGuest(isGuest);
 
     ui->userName_1->setText(userProfileName);
     ui->userName_2->setText(userProfileName);
@@ -344,6 +345,9 @@ void MainWindow::on_backToLogin_clicked()
 void MainWindow::on_logout_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    GameStateMachine::instance()->resetScoreAndLivesStateAndIsGuest();
+    isGuest = false;
+
 }
 
 void MainWindow::clearLogin(){
@@ -358,5 +362,6 @@ void MainWindow:: clearSignup(){
     ui->firstnameText->clear();
     ui->lastnameText->clear();
     ui->errorMessage_2->clear();
+    isGuest = false;
 }
 

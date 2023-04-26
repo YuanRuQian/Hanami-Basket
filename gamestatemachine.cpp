@@ -27,6 +27,7 @@ GameStateMachine::GameStateMachine(QObject *parent)
     setUpGameLevelConfig();
     score = 0;
     livesCount = DEFAULT_LIVES;
+    isGuest = false;
 }
 
 void GameStateMachine::handleBasketCollision()
@@ -74,6 +75,10 @@ void GameStateMachine::setGameLevel(GameLevel newGameLevel) {
 
 void GameStateMachine::setGameUsername(QString newUsername) {
     username = newUsername;
+}
+
+void GameStateMachine::setIsGuest(bool isGuest) {
+    this->isGuest = isGuest;
 }
 
 void GameStateMachine::setGameLevelWithText(QString gameLevelText) {
@@ -144,12 +149,19 @@ float GameStateMachine::getCurrentBasketMoveStep() {
 }
 
 void GameStateMachine::insertNewScoreRecord() {
-    Score::insertNewRecord(username, score);
+    if (!isGuest) {
+        Score::insertNewRecord(username, score);
+    }
 }
 
 void GameStateMachine::resetScoreAndLivesState() {
     score = 0;
     livesCount = DEFAULT_LIVES;
+}
+
+void GameStateMachine::resetScoreAndLivesStateAndIsGuest() {
+    resetScoreAndLivesState();
+    isGuest = false;
 }
 
 GameStateMachine::~GameStateMachine()

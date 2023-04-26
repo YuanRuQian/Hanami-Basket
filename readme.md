@@ -1,14 +1,26 @@
 # Hanami Basket: How to Play the Grame
 
-## Prerequisite
+## Run it locally
 
-- Add Qt Multimedia component
-  - Open the Qt Maintenance Tool.
-  - Click on ‘Add or remove components’.
-  - Search for ‘multimedia’ in the component list.
-  - Install the component that matches your version of Qt.
-- Open the [qt-droplet-game.pro](qt-droplet-game.pro) file in Qt Creator
-- Run the game & start playing
+1. Clone this repository to your local computer (Please make sure your local repo is named as **Hanami-Basket**)
+
+   ```bash
+   git clone https://github.com/YuanRuQian/Hanami-Basket Hanami-Basket
+   ```
+
+2. Add Qt Multimedia component
+
+     - Open the Qt Maintenance Tool.
+
+     - Click on ‘Add or remove components’.
+
+     - Search for ‘multimedia’ in the component list.
+
+     - Install the component that matches your version of Qt.
+
+
+3. Open the [qt-droplet-game.pro](qt-droplet-game.pro) file in Qt Creator
+4. Run the game & start playing
 
 ## Login Page
 
